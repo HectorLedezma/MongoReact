@@ -1,0 +1,11 @@
+.page-titulo{
+    width: 100%;
+}
+
+
+/*No Responsivo*/
+@media screen and (min-width: 568px){
+    .page-titulo{
+        width: 40%;
+    }
+}
