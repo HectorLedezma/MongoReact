@@ -3,14 +3,14 @@ const {Usuario,Salas} = require('./models');
 //C de usuario
 const addUser = async (req,res) =>{
   try {
-    const docs = await Usuario.create(req.body);
-    res.json(
-      docs
+    await Usuario.create(req.body);
+    res.send(
+      "Ok"
     )  
   } catch (error) {
     console.log('Hubo un error en subir los datos')
     console.log(error)
-    res.send([])
+    res.send("Error")
   }
 }
 
