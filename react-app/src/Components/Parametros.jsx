@@ -1,5 +1,5 @@
 import BuscaUser from "./BuscaUser";
-
+import Login from "./Login";
 
 function Paramets(props){
 
@@ -13,8 +13,10 @@ function Paramets(props){
                     <input type="text"/>
                 </form>
             );
+        case 3:
+            return(<Login/>)    
         default:
-            break;
+        break;
     }
 }
 

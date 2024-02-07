@@ -8,6 +8,13 @@ export class Connection {
     constructor(){
         this.blog = [];
     }
+    async crear(coll,params){
+        try {
+            await axios.post(uri+coll,params)
+        } catch (error) {
+            console.log(error)
+        }
+    }
     async leer(col){
         
         try {
@@ -24,7 +31,6 @@ export class Connection {
         try {
             //const req = await axios.request(bod)
             const res = await axios.post(uri+col,params);
-            console.log("Body:",{params})
             this.blog = res.data;
         } catch (error) {
             this.blog = String(error);

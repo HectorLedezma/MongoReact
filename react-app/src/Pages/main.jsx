@@ -2,8 +2,8 @@ import {React, useRef, useState} from 'react';
 import {Outlet,NavLink} from 'react-router-dom'
 import PageProfile from '../Images/PageProfile.svg'
 import { FaUser, FaSearch } from "react-icons/fa";
-import {Connection/*, TraeSala]*/} from '../Conection/connection';
-import Table from '../Components/table';
+//import {Connection/*, TraeSala]*/} from '../Conection/connection';
+//import Table from '../Components/table';
 import Paramets from '../Components/Parametros';
 
 // style={{width:"100%"}}
@@ -16,7 +16,7 @@ function MainPage(){
     const nav2 = useRef();
     const nav3 = useRef();
 
-    const [datos,setDatos] = useState([])
+    //const [datos,setDatos] = useState([])
 
     /*const EvalNav = (navList) =>{
         console.log(navList.hidden)
@@ -46,7 +46,7 @@ function MainPage(){
     };
 
     const [tipo,setTipo] = useState(0);
-
+/*
     const cargar = (route,params) =>{
         const conn = new Connection();//se establece conexión a la API
 
@@ -59,7 +59,7 @@ function MainPage(){
             console.error("Error al leer los datos:", error);
         });
     }
-
+*/
     return(
         <div>
             <header className='bg-primary p-2 d-flex align-items-center text-light'>
@@ -110,7 +110,7 @@ function MainPage(){
                                             ev=>{
                                                 ev.preventDefault();
                                                 setNavVal(1)
-                                                setDatos([])
+                                                //setDatos([])
                                                 setTipo(0)
                                             }
                                         } 
@@ -145,6 +145,7 @@ function MainPage(){
                                             ev=>{
                                                 ev.preventDefault();
                                                 setNavVal(4);
+                                                setTipo(3);
                                             }
                                         } 
                                     ref={nav3} 
@@ -164,15 +165,7 @@ function MainPage(){
             <div>
                 
             </div>
-            <div className=''>
-                <button className='m-3 btn btn-outline-primary' onClick={
-                    ev =>{
-                        ev.preventDefault();
-                        console.log('se presionó el botón')
-                    }
-                }>
-                    Sala
-                </button>
+            <div className='bg-dark' style={{'height':'100%'}}>
                 {/*<Table data={datos}/>*/}
                 <Paramets type={tipo}/>
             </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import Rutas from './Routes/index.jsx';
 import {BrowserRouter} from 'react-router-dom'
 import './Styles/responsive.css'
+import "react-toastify/dist/ReactToastify.css";
 //<Rutas/><Outlet/>
 function App() {
   return (
