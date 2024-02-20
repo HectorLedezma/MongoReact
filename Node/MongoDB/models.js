@@ -18,12 +18,17 @@ const SchemaSalas = new mongoose.Schema({
   Horario: Array
 })
 
+const TokenSchema = new mongoose.Schema({
+  rut:String,
+  state:Boolean
+})
 
 const Usuario = mongoose.model('Usuario', usuarioSchema,'User');
-const Salas = mongoose.model('Sala',SchemaSalas,'Salas')
-
+const Salas = mongoose.model('Sala',SchemaSalas,'Salas');
+const Token = mongoose.model('Token',TokenSchema,'Token');
 module.exports = {
   Usuario,
-  Salas
+  Salas,
+  Token
 };
 

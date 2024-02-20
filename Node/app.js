@@ -4,9 +4,10 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const APIRoutes = require('./MongoDB/routes')
+const Token = require('./Token/endpoint')
 const bodyParser = require('body-parser');
-const db = require('./MongoDB/connection')
-
+const MongoDB = require('./MongoDB/Connection')
+const MySQLDB = require('./MySQL/Connection')
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -15,7 +16,9 @@ const port = process.env.PORT || 8000;
 app.listen(port, () => {
     console.log(`Servidor Node.js en http://localhost:${port}`);
 });
-db();
+MongoDB();
+//MySQLDB();
 app.use('/data',APIRoutes)
+app.use('/user',Token);
 
 

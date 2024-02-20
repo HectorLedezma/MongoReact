@@ -2,10 +2,26 @@
     width: 100%;
 }
 
+.nav-menu{
+    margin-right: 1em;
+    margin-left: -2em;
+    border-radius: var(--bs-border-radius);
+    position:absolute;
+    border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+    border-color: var(--bs-primary-border-subtle);
+    border-radius: var(--bs-border-radius);
+}
 
 /*No Responsivo*/
-@media screen and (min-width: 568px){
+@media screen and (min-width: 994px){
     .page-titulo{
         width: 40%;
+    }
+    .nav-menu{
+        width: 100%;
+        position:relative;
+        margin-right: 0em;
+        margin-left: 0em;
+        border: none;
     }
 }

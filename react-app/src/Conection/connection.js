@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 import axios from "axios";
-const uri = "http://localhost:8000/data/"
+const uri = "http://localhost:8000/"
 
 export class Connection {
     constructor(){
@@ -10,7 +10,7 @@ export class Connection {
     }
     async crear(coll,params){
         try {
-            await axios.post(uri+coll,params)
+            await axios.post(uri+"data/"+coll,params)
         } catch (error) {
             console.log(error)
         }
@@ -18,7 +18,7 @@ export class Connection {
     async leer(col){
         
         try {
-            const res = await axios.get(uri+col);
+            const res = await axios.get(uri+"data/"+col);
             //console.log(res)
             this.blog = res.data;
         } catch (error) {
@@ -30,12 +30,39 @@ export class Connection {
         
         try {
             //const req = await axios.request(bod)
-            const res = await axios.post(uri+col,params);
+            const res = await axios.post(uri+"data/"+col,params);
             this.blog = res.data;
         } catch (error) {
             this.blog = String(error);
         }
         return this.blog
+    }
+
+    async login(params){
+        try {
+            await axios.post(uri+'user/login',params)    
+        } catch (error) {
+            console.log(error)
+        }
+        
+    }
+
+    async log(params){
+        try {
+            const res = await axios.get(uri+"user/log",params);
+            this.blog = res.data;
+        } catch (error) {
+            this.blog = String(error);
+        }
+        return this.blog
+    }
+
+    async logout(params){
+        try {
+            await axios.post(uri+'user/logout',params)   
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 

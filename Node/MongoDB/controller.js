@@ -1,4 +1,4 @@
-const {Usuario,Salas} = require('./models');
+const {Usuario,Salas,Token} = require('./models');
 
 //C de usuario
 const addUser = async (req,res) =>{
@@ -86,27 +86,53 @@ const getSala = async (req,res) =>{
 
 //D de Salas
 
+
+const login = async (req,res) =>{
+  try {
+    if(Object.keys(req.body).length !== 0){
+      console.log(req.body)
+      await Token.updateOne(req.body.find,{"state":true});
+    }
+  } catch (error) {
+    console.log('Hubo un error en actualizar los datos')
+    console.log(error)
+  }
+}
+
+const log = async (req,res) =>{
+  try {
+    //console.log(Object.keys(req.body).length)
+    let docs = {};
+    if(Object.keys(req.body).length !== 0){
+      console.log("log",req.body)
+      docs = await Token.findOne(req.body);
+    }
+    res.json(
+      docs
+    )
+  } catch (error) {
+    console.log('Hubo un error en obtener los datos')
+  }
+}
+
+const logout = async (req,res) =>{
+  try {
+    if(Object.keys(req.body).length !== 0){
+      await Token.updateOne(req.body,{"state":false});
+    }
+  } catch (error) {
+    console.log('Hubo un error en actualizar los datos')
+    console.log(error)
+  }
+}
+
 module.exports = {
   addUser,
   getUsers,
   getOneUser,
   getSalas,
-  getSala
+  getSala,
+  login,
+  log,
+  logout
 }
-
-/*
-const obtenerUsuarios = async (req, res) => {
-  try {
-    const usuarios = await Usuario.find()
-    console.log('consultando usuarios')
-    res.json(usuarios);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ mensaje: 'Error del servidor' });
-  }
-};
-
-module.exports = {
-  obtenerUsuarios,
-};
-*/

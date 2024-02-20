@@ -1,9 +1,12 @@
 import cryptoJs from "crypto-js";
 import { useRef, useState } from "react"
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { Connection } from "../Conection/connection";
+import { Rut } from "../Varios/TemaRut";
+import { HiUser,HiMail, HiEye, HiEyeOff, HiLockClosed } from "react-icons/hi";
 
 function NewUser(){
+    const gestRut = new Rut();
 
     const rutRef = useRef();
     const nomRef = useRef();
@@ -11,48 +14,13 @@ function NewUser(){
     const passRef = useRef();
     const pass2Ref = useRef();
 
-    function validaRut(rut){
-        let ok = false;
-        let spg = rut.replace(/[.-]/g, '');
-        let snd = spg.slice(0, -1);
-        let r_u_t = snd.split("")
-        let t_u_r = r_u_t.reverse();
-        let tur = t_u_r.join("");
-        
-        let multi = 2;
-        let sum = 0;
-        for(let i = 0;i<tur.length;i++){
-            if(multi > 7){
-                multi = 2;
-            }
-            //console.log(tur[i]);
-            sum = sum+parseInt(tur[i]*multi);
-            multi = multi+1;
-        }
-        
-        let dv = 11-(sum%11);
-        let dvu = rut[rut.length-1];
-        if(dvu === 'k' || dvu === 'K'){
-            dvu = dvu.toUpperCase();
-        }
-        //console.log('dvu: ',dvu);
-        if(dv===11){
-            dv = "0";
-        }else if(dv === 10){
-            dv="K";
-        }
-        //console.log('dv: ',dv);
-        if(String(dv) === dvu){
-            ok = true;
-        }else{
-            ok = false
-        }
-        return ok;
-    }
+    
     const [ocupado,setOcupado] = useState(false);
+    const [view,setView] = useState(true);
+    const [view2,setView2] = useState(true);
     function existe(rut){
         const con = new Connection();
-        con.leerUno('/usuario/',{"rut":limpiaRut(rut)}).then(data=>{
+        con.leerUno('/usuario/',{"rut":gestRut.limpiaRut(rut)}).then(data=>{
             if(data !== null){
                 setOcupado(true);
             }else{
@@ -62,15 +30,7 @@ function NewUser(){
 
     }
 
-    function limpiaRut(rut){
-        let spg = rut.replace(/[.-]/g, '');
-        let snd = spg.slice(0, -1);
-        let nRut = spg;
-        if(spg[spg.length-1] === 'k' || spg[spg.length-1] === 'K'){
-            nRut = snd + 'k';
-        }
-        return nRut;
-    }
+    
 
     const crear=(rut,nom,mail,pass)=>{
         let errorMeseage = ["Los campos\n"];
@@ -90,7 +50,7 @@ function NewUser(){
         if(errorMeseage.length === 1){
             pass = cryptoJs.SHA256(pass).toString();
             let params = {
-                rut: limpiaRut(rut),
+                rut: gestRut.limpiaRut(rut),
                 nombre: nom,
                 correo:mail,
                 password:pass
@@ -126,38 +86,70 @@ function NewUser(){
         <form className="m-3 p-3 bg-light rounded">
             <h3 className="text-center">¿Nuevo Usuario?</h3>
             <h4 className="text-center">Regístrate aquí</h4>
-            <div className="mt-1 mb-1 d-flex justify-content-center">
-                <input placeholder="RUT" ref={rutRef} onChange={ev=>{
-                    ev.preventDefault();
-                    setRutOk(validaRut(rutRef.current.value))
-                    //console.log(limpiaRut(rutRef.current.value));
-                    existe(rutRef.current.value);
-                }} style={{width:"75%"}}/>
+            <div className=" d-flex justify-content-center">
+                <div className="mt-1 mb-1 input-group" style={{width:"75%"}}>
+                    <div className="input-group-text">
+                        <HiUser/>
+                    </div>
+                    <input className="form-control" placeholder="RUT" ref={rutRef} onChange={ev=>{
+                        ev.preventDefault();
+                        setRutOk(gestRut.validaRut(rutRef.current.value))
+                        //console.log(limpiaRut(rutRef.current.value));
+                        existe(rutRef.current.value);
+                    }}/>
+                </div>
             </div>
+            
             <div className="d-flex justify-content-center">
                 <p className="text-danger text-center" hidden={rutOk}>El RUT no es valido</p>
                 <p className="text-danger text-center" hidden={!ocupado}>El usuario ya existe</p>
             </div>
-            <div className="mt-1 mb-1 d-flex justify-content-center">
-                <input placeholder="Nombre" ref={nomRef} style={{width:"75%"}}/>
+            <div className=" d-flex justify-content-center">
+                <div className="mt-1 mb-1 input-group"  style={{width:"75%"}}>
+                    <div className="input-group-text">
+                        <HiUser/>
+                    </div>
+                    <input className="form-control" placeholder="Nombre" ref={nomRef}/>
+                </div>
             </div>
-            <div className="mt-1 mb-1 d-flex justify-content-center">
-                <input placeholder="Correo" ref={mailRef} type="email" style={{width:"75%"}}/>
+            <div className=" d-flex justify-content-center">
+                <div className="mt-1 mb-1 input-group" style={{width:"75%"}}>
+                    <div className="input-group-text">
+                        <HiMail/>
+                    </div>
+                    <input className="form-control" placeholder="Correo" ref={mailRef} type="email"/>
+                </div>
             </div>
-            <div className="mt-1 mb-1 d-flex justify-content-center">
-                <input placeholder="Contraseña" ref={passRef} type="password" style={{width:"75%"}}/>
+            <div className=" d-flex justify-content-center">
+                <div className="mt-1 mb-1 input-group" style={{width:"75%"}}>
+                    <div className="input-group-text">
+                        <HiLockClosed />
+                    </div>
+                    <input className="form-control" placeholder="Contraseña" ref={passRef} type={!view? "text":"password"}/>
+                    <div className="input-group-text">
+                        <div role="button" onClick={ev=>{ev.preventDefault();setView(!view);}}>{view ? (<HiEye/>):(<HiEyeOff/>)}</div>
+                    </div>
+                </div>
             </div>
-            <div className="mt-1 mb-1 d-flex justify-content-center">
-                <input onChange={
-                    ev=>{
-                        ev.preventDefault();
-                        if(passRef.current.value !== pass2Ref.current.value){
-                            setPassOk(false);
-                        }else{
-                            setPassOk(true);
+            <div className=" d-flex justify-content-center">
+                <div className="mt-1 mb-1 input-group" style={{width:"75%"}}>
+                    <div className="input-group-text">
+                        <HiLockClosed />
+                    </div>
+                    <input className="form-control" onChange={
+                        ev=>{
+                            ev.preventDefault();
+                            if(passRef.current.value !== pass2Ref.current.value){
+                                setPassOk(false);
+                            }else{
+                                setPassOk(true);
+                            }
                         }
-                    }
-                } placeholder="Confirma la contraseña" ref={pass2Ref} type="password" style={{width:"75%"}}/>
+                    } placeholder="Confirma la contraseña" ref={pass2Ref} type={!view2? "text":"password"}/>
+                    <div className="input-group-text">
+                        <div role="button" onClick={ev=>{ev.preventDefault();setView2(!view2);}}>{view2 ? (<HiEye/>):(<HiEyeOff/>)}</div>
+                    </div>
+                </div>
             </div>
             <div className="d-flex justify-content-center">
                 <p className="text-danger text-center" hidden={passOk}>las contraseñas no coinciden</p>
@@ -179,7 +171,6 @@ function NewUser(){
                     }
                 } className="btn btn-primary btn-lg">Registrar</button>
             </div>
-            <ToastContainer autoClose={5000}/>
         </form>
     )
 }

@@ -1,18 +1,17 @@
 import {React, useRef, useState} from 'react';
-import {Outlet,NavLink} from 'react-router-dom'
+import {Outlet,NavLink,useLocation,useNavigate } from 'react-router-dom'
 import PageProfile from '../Images/PageProfile.svg'
-import { FaUser, FaSearch } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 //import {Connection/*, TraeSala]*/} from '../Conection/connection';
 //import Table from '../Components/table';
-import Paramets from '../Components/Parametros';
+//import Paramets from '../Components/Parametros';
+import Cookies from 'universal-cookie';
+import Body from '../Components/Body';
 
 // style={{width:"100%"}}
-function MainPage(){
-    const searchBtn = useRef();
-
+function MainPage(props){
+    const navi = useNavigate();
     const [navVal,setNavVal] = useState(0);
-    const nav0 = useRef();
-    const nav1 = useRef();
     const nav2 = useRef();
     const nav3 = useRef();
 
@@ -31,13 +30,6 @@ function MainPage(){
         //}
     }*/
 
-    //const buscaSalas = () =>{
-    //    return 
-    //}
-
-    const searchSubmint = () =>{
-        console.log(searchBtn.current.value)
-    }
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -45,7 +37,6 @@ function MainPage(){
         setIsOpen(!isOpen);
     };
 
-    const [tipo,setTipo] = useState(0);
 /*
     const cargar = (route,params) =>{
         const conn = new Connection();//se establece conexión a la API
@@ -59,53 +50,10 @@ function MainPage(){
             console.error("Error al leer los datos:", error);
         });
     }
-*/
-    return(
-        <div>
-            <header className='bg-primary p-2 d-flex align-items-center text-light'>
-                <img alt="profile" className='border border-2 rounded-circle' src={PageProfile} style={{width:"100px"}}/>
-                <div className='m-2 page-titulo'>
-                    <h1>Pagina de Prueba</h1>
-                    <h3>encabezado de la pagina</h3>
-                </div>
-                <div className='ms-2 me-2' style={{width:"100%"}}>
-                    <nav className="navbar navbar-expand-lg bg-primary">
-                        <div className="container-fluid">
-                            <button 
-                                className="navbar-toggler " 
-                                type="button" 
-                                data-bs-toggle="collapse" 
-                                data-bs-target="#navbarNavAltMarkup" 
-                                aria-controls="navbarNavAltMarkup" 
-                                aria-expanded="false" 
-                                aria-label="Toggle navigation"
-                                onClick={toggleNavbar}
-                                >
-                                <span className="navbar-toggler-icon"></span>
-                            </button>
-                            <div 
-                                className={`collapse navbar-collapse mt-2 fs-4 ${isOpen ? 'show' : ''}`} 
-                                id="navbarNavAltMarkup"
-                            >
-                                <form onSubmit={ev=>{
-                                    ev.preventDefault();
-                                    searchSubmint();
-                                }} className='input-group' style={{height:"100%"}}>
-                                    <input ref={searchBtn} className='form-control' type='text'/>
-                                    <span onClick={
-                                        ev=>{
-                                            ev.preventDefault();
-                                            searchSubmint();
-                                        }
-                                    } className="input-group-text" role="button" id="basic-addon2"><FaSearch /></span>
-                                </form>
-                                <div className="
-                                    navbar-nav 
-                                    align-items-center 
-                                    justify-content-end 
-                                    bg-primary
-                                " 
-                                style={{width:"100%"}}>
+    <div>
+                <h1>{rutaActual}</h1>
+            </div>
+
                                     <NavLink onClick={
                                             ev=>{
                                                 ev.preventDefault();
@@ -118,6 +66,7 @@ function MainPage(){
                                     className={`text-black link-light nav-link me-1 ms-1 ${(navVal === 1) ? 'border rounded p-1 m-1' : ''}`}>
                                             Limpiar
                                     </NavLink>
+
                                     <NavLink onClick={
                                             ev=>{
                                                 ev.preventDefault();
@@ -130,44 +79,107 @@ function MainPage(){
                                     className={`text-black link-light nav-link me-1 ms-1 ${(navVal === 2) ? 'border rounded p-1 m-1' : ''}`}>
                                             Usuarios
                                     </NavLink>
+*/
+
+    const location = useLocation();
+    const cookie = new Cookies();
+    const logued = (cookie.get('UserRut')!== undefined);
+    return(
+        <div>
+            <header className='bg-primary p-2 d-flex align-items-center text-light'>
+                
+                <img alt="profile" className='border border-2 rounded-circle' src={PageProfile} style={{width:"100px"}}/>
+                <div className='m-2 page-titulo' style={{width:"100%"}}>
+                    <h1>Pagina de Prueba</h1>
+                    <h3>encabezado de la pagina</h3>
+                </div>
+
+                <div className='ms-2 me-2'>
+                    <nav className="navbar navbar-expand-lg bg-primary">
+                        <div className="container-fluid justify-content-end">
+                            
+                            <button 
+                                className="navbar-toggler " 
+                                type="button" 
+                                data-bs-toggle="collapse" 
+                                data-bs-target="#navbarNavAltMarkup" 
+                                aria-controls="navbarNavAltMarkup" 
+                                aria-expanded="false" 
+                                aria-label="Toggle navigation"
+                                onClick={toggleNavbar}
+                                >
+                                <span className="navbar-toggler-icon"></span>
+                            </button>
+                            
+                            <div 
+                                className={`collapse navbar-collapse mt-2 fs-4 ${isOpen ? 'show' : ''}`} 
+                                id="navbarNavAltMarkup"
+                            >                
+                                <div 
+                                    className="
+                                        nav-menu z-3
+                                        navbar-nav 
+                                        align-items-center 
+                                        justify-content-end 
+                                        bg-primary
+                                    " 
+                                >
+                                    
                                     <NavLink onClick={
                                             ev=>{
                                                 ev.preventDefault();
                                                 setNavVal(3);
-                                                //cargar('/salas/',{})
-                                                setTipo(2)
+                                                navi('/salas')
                                             }
                                         } ref={nav2} 
-                                        className={`text-black link-light nav-link me-1 ms-1 ${(navVal === 3) ? 'border rounded p-1 m-1' : ''}`}>
+                                        className={
+                                            `
+                                                text-black 
+                                                link-light 
+                                                nav-link 
+                                                me-3 ms-3 
+                                                ${(navVal === 3) ? 'border rounded p-1 m-1' : ''}
+                                            `
+                                        }>
                                             Salas
                                     </NavLink>
+
                                     <NavLink onClick={
                                             ev=>{
                                                 ev.preventDefault();
                                                 setNavVal(4);
-                                                setTipo(3);
+                                                if(logued){
+                                                    navi('/user')
+                                                }else{
+                                                    navi('/login')
+                                                }
+                                                
                                             }
                                         } 
                                     ref={nav3} 
-                                    className={`text-black link-light nav-link me-1 ms-1 d-flex ${(navVal === 4) ? 'border rounded p-1 m-1' : ''}`}>
-                                        Login <FaUser className='mt-2 ms-2' size={20}/>
+                                    className={
+                                        `
+                                            text-black 
+                                            link-light 
+                                            nav-link 
+                                            me-3 ms-3 
+                                            d-flex 
+                                            ${(navVal === 4) ? 'border rounded p-1 m-1' : ''}
+                                        `
+                                        }>
+                                        {logued? "User":"Login"} <FaUser className='mt-2 ms-2' size={20}/>
                                     </NavLink>
                                 </div>
                             </div>
                         </div>
                     </nav>
-                    {/*
-                        <div role="button" className='text-black link-light d-flex justify-content-end align-items-center me-1 ms-1'>                
-                    </div>*/}
                 </div>
                 
             </header>
-            <div>
-                
-            </div>
+            
             <div className='bg-dark' style={{'height':'100%'}}>
-                {/*<Table data={datos}/>*/}
-                <Paramets type={tipo}/>
+                {/*<Paramets type={tipo}/>*/}
+                <Body route={location.pathname}/>
             </div>
             <Outlet/>
         </div>
