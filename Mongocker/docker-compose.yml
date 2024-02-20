@@ -1,0 +1,18 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo:latest
+    restart: always
+    container_name: testing-mongocker
+    hostname: mongocker-host
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: pass
+    volumes:
+      - ./data:/data/db
+      - ./data/log:/var/log/mongodb/
+    ports:
+      - "27017:27017"
