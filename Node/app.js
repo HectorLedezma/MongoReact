@@ -4,10 +4,8 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const APIRoutes = require('./MongoDB/routes')
-const Token = require('./Token/endpoint')
 const bodyParser = require('body-parser');
 const MongoDB = require('./MongoDB/Connection')
-const MySQLDB = require('./MySQL/Connection')
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -18,7 +16,6 @@ app.listen(port, () => {
 });
 MongoDB();
 //MySQLDB();
-app.use('/data',APIRoutes)
-app.use('/user',Token);
+app.use('/data',APIRoutes);
 
 
