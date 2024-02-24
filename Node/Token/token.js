@@ -1,10 +1,14 @@
-const express = require('express');
-const { login, log, logout } = require('../MongoDB/controller');
+const jwt = require('jsonwebtoken');
+const moment = require('moment');
 
-const router = express.Router();
+function CreateToken(user){
+    const jornada = 12;
+    const payload = {
+        rut : user.rut,
+        iat : moment().unix(),
+        exp : moment().add(jornada,'hours').unix()
+    }
+    return jwt.sign(payload,'claveTekken');
+}
 
-router.post('/login',login);
-router.get('/log',log);
-router.post('/logout',logout);
-
-module.exports = router;
+module.exports = CreateToken

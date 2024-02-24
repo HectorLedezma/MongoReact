@@ -2,6 +2,7 @@ const {Usuario,Salas,Token} = require('./models');
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const CreateToken = require('../Token/token');
 
 //C de usuario
 const addUser = async (req,res) =>{
@@ -51,7 +52,10 @@ const iniciarSesion = async (req, res) => {
   console.log('Login one user')
   try {
     const docs = await Usuario.findOne(req.body);
-    console.log(docs);
+    //console.log(docs);
+    const Tekken = CreateToken(docs);
+    res.json(Tekken)
+    //console.log(Tekken);
   } catch (error) {
     console.log('Hubo un error en obtener los datos')
     console.log(error)
