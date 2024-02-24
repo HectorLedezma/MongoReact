@@ -8,6 +8,7 @@ function CreateToken(user){
         iat : moment().unix(),
         exp : moment().add(jornada,'hours').unix()
     }
+    console.log(payload);
     return jwt.sign(payload,'claveTekken');
 }
 

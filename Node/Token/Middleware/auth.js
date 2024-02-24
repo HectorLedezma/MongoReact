@@ -9,9 +9,7 @@ const verificarToken = (req, res, next) => {
   }
 
   try {
-    console.log(token);
-    const decoded = jwt.verify(token, 'calveTekken');
-    console.log(decoded);
+    const decoded = jwt.verify(token, 'claveTekken');
     req.usuario = decoded.usuario;
     next();
   } catch (error) {
