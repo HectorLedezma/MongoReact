@@ -5,13 +5,16 @@ const {
     getUsers,
     getOneUser,
     getSalas,
-    getSala
+    getSala,
+    iniciarSesion
 } = require('./controller');
+const verificarToken = require('../Token/Middleware/auth');
 
 const router = express.Router();
 router.post('/usuarios/new', addUser);
 router.post('/usuarios/todo', getUsers);
-router.post('/usuario/', getOneUser);
+router.post('/usuario/',verificarToken, getOneUser);
+router.get('/login',iniciarSesion)
 router.get('/salas/todo',getSalas)
 router.post('/salas/',getSala)
 

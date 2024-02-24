@@ -1,5 +1,8 @@
 const {Usuario,Salas,Token} = require('./models');
 
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 //C de usuario
 const addUser = async (req,res) =>{
   try {
@@ -41,6 +44,21 @@ const getOneUser = async (req,res) =>{
     res.send('Hubo un error en obtener los datos')
   }
 }
+
+// Función para iniciar sesión y generar token
+const iniciarSesion = async (req, res) => {
+  // Lógica para verificar credenciales y generar token JWT
+  console.log('Login one user')
+  try {
+    const docs = await Usuario.findOne(req.body);
+    console.log(docs);
+  } catch (error) {
+    console.log('Hubo un error en obtener los datos')
+    console.log(error)
+    res.send('Hubo un error en obtener los datos')
+  }
+};
+
 // U de usuario
 
 
@@ -130,6 +148,7 @@ module.exports = {
   addUser,
   getUsers,
   getOneUser,
+  iniciarSesion,
   getSalas,
   getSala,
   login,
