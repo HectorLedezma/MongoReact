@@ -41,7 +41,21 @@ function OldUser(){
 
     const ingresa = (rut,pass) => {
         const con = new Connection();
-        con.leerUno('/usuario/',{"rut":gestRut.limpiaRut(rut)}).then(data=>{
+        con.login({"rut":gestRut.limpiaRut(rut),"password":cryptoJs.SHA256(pass).toString()}).then(token => {
+            if(token){
+                let cookie = new Cookies();
+                const caduca = 2;
+                const caducaDate = new Date();
+                caducaDate.setMinutes(caducaDate.getMinutes()+caduca);
+                cookie.set("UserToken",token,{expires:caducaDate,sameSite:'strict'});
+                navigate('/user');
+            }else{
+                toast.error("El RUT o contraseña son incorrectos",{position:'top-center',autoClose:5000});
+            }
+        }).catch(error=>{
+            console.log(error)
+        })
+        /*con.leerUno('/usuario/',{"rut":gestRut.limpiaRut(rut)}).then(data=>{
             if(data !== null){
                 if(data.password === cryptoJs.SHA256(pass).toString()){
                     try {
@@ -66,7 +80,7 @@ function OldUser(){
                 console.log('error')
                 toast.error("El usuario no existe",{position:'top-center',autoClose:5000});
             }
-        })
+        })*/
     }
 
     return(

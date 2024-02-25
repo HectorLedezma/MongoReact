@@ -8,6 +8,23 @@ export class Connection {
     constructor(){
         this.blog = [];
     }
+
+    async login(params){
+        try {
+            await axios.get(uri+"data/login",params);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async logout(params){
+        try {
+            await axios.post(uri+'data/logout',params)   
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     async crear(coll,params){
         try {
             await axios.post(uri+"data/"+coll,params)
@@ -38,32 +55,6 @@ export class Connection {
         return this.blog
     }
 
-    async login(params){
-        try {
-            await axios.post(uri+'user/login',params)    
-        } catch (error) {
-            console.log(error)
-        }
-        
-    }
-
-    async log(params){
-        try {
-            const res = await axios.get(uri+"user/log",params);
-            this.blog = res.data;
-        } catch (error) {
-            this.blog = String(error);
-        }
-        return this.blog
-    }
-
-    async logout(params){
-        try {
-            await axios.post(uri+'user/logout',params)   
-        } catch (error) {
-            console.log(error)
-        }
-    }
 }
 
 

@@ -2,14 +2,15 @@ const jwt = require('jsonwebtoken');
 const moment = require('moment');
 
 function CreateToken(user){
-    const jornada = 12;
+    const jornada = 2;
     const payload = {
         rut : user.rut,
+        pass: user.password,
         iat : moment().unix(),
-        exp : moment().add(jornada,'hours').unix()
+        exp : moment().add(jornada,'minutes').unix()
     }
     console.log(payload);
-    return jwt.sign(payload,'claveTekken');
+    return jwt.sign(payload,'claveTekken',{expiresIn:'2m'});
 }
 
 module.exports = CreateToken
