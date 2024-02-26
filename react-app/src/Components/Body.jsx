@@ -1,10 +1,11 @@
 import Cookies from "universal-cookie";
-import Login from "./Login";
+import Login from "../Pages/Login";
 import { useNavigate } from "react-router-dom";
 import { Connection } from "../Conection/connection";
 import cryptoJs from "crypto-js";
 import { Rut } from "../Varios/TemaRut";
 import Profile from "./Profile";
+import Salas from "../Pages/salas";
 
 function Body(props){
     const gestRut = new Rut();
@@ -24,9 +25,7 @@ function Body(props){
     switch (props.route) {
         case '/salas':
             return(//se puede mostrar la vista de las salas
-                <div>
-                    <h1 className="text-light">pagina de salas</h1>
-                </div>
+                <Salas/>
             )
         case '/user':
             const cookie = new Cookies();

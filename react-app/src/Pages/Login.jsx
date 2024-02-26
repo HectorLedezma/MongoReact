@@ -1,6 +1,6 @@
 import { useState } from "react"
-import NewUser from "./Nuevo";
-import OldUser from "./Antiguo";
+import NewUser from "../Components/Nuevo";
+import OldUser from "../Components/Antiguo";
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 function Login(){
