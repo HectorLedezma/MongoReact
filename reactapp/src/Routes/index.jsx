@@ -6,16 +6,16 @@ import Cookies from 'universal-cookie';
 import { Connection } from '../Conection/connection';
 
 function Rutas(){
-    const cookie = new Cookies;
+    const cookie = new Cookies();
     const [log,setLog] = useState(false);
     
     useEffect(()=>{
         const con = new Connection();
         con.log(cookie.get('UserToken')).then(loged =>{
-            console.log('logueado: ',loged);
+            //console.log('logueado: ',loged);
             setLog(loged)
         })
-    })
+    });
 
     return(
         <Routes>

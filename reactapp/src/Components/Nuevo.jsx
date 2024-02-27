@@ -18,7 +18,7 @@ function NewUser(){
     const [ocupado,setOcupado] = useState(false);
     const [view,setView] = useState(true);
     const [view2,setView2] = useState(true);
-    const [primera,setPrimera] = useState(true);
+    //const [primera,setPrimera] = useState(true);
     function existe(rut){
         const con = new Connection();
         con.leerSiHay('/usuario/hay',{"rut":gestRut.limpiaRut(rut)}).then(data=>{

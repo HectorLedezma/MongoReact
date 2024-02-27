@@ -22,6 +22,7 @@ const verificarToken = (req, res, next) => {
 
 function hayToken(req,res){
   const token = req.header('token');
+  //console.log('Token: ',req)
   let hay = false;
   if (!token) {
     hay = false;

@@ -42,14 +42,16 @@ function OldUser(){
     const ingresa = (rut,pass) => {
         const con = new Connection();
         con.login({"rut":gestRut.limpiaRut(rut),"password":cryptoJs.SHA256(pass).toString()}).then(token => {
-            if(token){
+            if(token !== ''){
                 let cookie = new Cookies();
                 const caduca = 2;
                 const caducaDate = new Date();
                 caducaDate.setMinutes(caducaDate.getMinutes()+caduca);
+                console.log('Token de usuario',token);
                 cookie.set("UserToken",token,{expires:caducaDate,sameSite:'strict'});
                 navigate('/user');
             }else{
+                console.log('Token: ',token)
                 toast.error("El RUT o contraseña son incorrectos",{position:'top-center',autoClose:5000});
             }
         }).catch(error=>{

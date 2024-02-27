@@ -17,7 +17,7 @@ router.post('/usuarios/todo',verificarToken, getUsers);
 router.post('/usuario/',verificarToken, getOneUser);
 router.get('/usuario/token',hayToken);
 router.post('/usuario/hay',hayUser);
-router.get('/login',iniciarSesion)
+router.post('/login',iniciarSesion)
 router.get('/salas/todo',getSalas)
 router.post('/salas/',getSala)
 

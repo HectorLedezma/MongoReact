@@ -81,6 +81,7 @@ const iniciarSesion = async (req, res) => {
       const docs = await Usuario.findOne(req.body);
       console.log('User log: ',docs);
       const Tekken = CreateToken(docs);
+      console.log('Token a entregar: ',Tekken);
       res.json(Tekken)
     }else{
       res.send('Hubo un error al ingresar usuario')

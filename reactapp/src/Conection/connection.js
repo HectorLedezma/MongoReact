@@ -11,10 +11,12 @@ export class Connection {
 
     async login(params){
         try {
-            await axios.get(uri+"data/login",params);
+            const res = await axios.post(uri+"data/login",params);
+            this.blog = res.data;
         } catch (error) {
             console.log(error)
         }
+        return this.blog
     }
 
     async log(params){

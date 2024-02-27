@@ -1,4 +1,4 @@
-import {React, useRef, useState} from 'react';
+import {React, useEffect, useRef, useState} from 'react';
 import {Outlet,NavLink,useLocation,useNavigate } from 'react-router-dom'
 import PageProfile from '../Images/PageProfile.svg'
 import { FaUser } from "react-icons/fa";
@@ -7,6 +7,7 @@ import { FaUser } from "react-icons/fa";
 //import Paramets from '../Components/Parametros';
 import Cookies from 'universal-cookie';
 import Body from '../Components/Body';
+import { Connection } from '../Conection/connection';
 
 // style={{width:"100%"}}
 function MainPage(props){
@@ -83,7 +84,16 @@ function MainPage(props){
 
     const location = useLocation();
     const cookie = new Cookies();
-    const logued = (cookie.get('UserRut')!== undefined);
+    const [logued,setLog] = useState(false);
+
+    useEffect(()=>{
+        const con = new Connection();
+        con.log(cookie.get('UserToken')).then(loged =>{
+            //console.log('logueado (main): ',loged);     
+            setLog(loged)
+        })
+    })
+
     return(
         <div>
             <header className='bg-primary p-2 d-flex align-items-center text-light'>
