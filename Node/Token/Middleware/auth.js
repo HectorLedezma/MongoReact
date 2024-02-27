@@ -9,12 +9,32 @@ const verificarToken = (req, res, next) => {
   }
 
   try {
+    //console.log(token);
     const decoded = jwt.verify(token, 'claveTekken');
+    //console.log('decoded: ',decoded);
     req.usuario = decoded.usuario;
+    
     next();
   } catch (error) {
     res.status(401).json({ msg: 'Token no válido' });
   }
 };
 
-module.exports = verificarToken;
+function hayToken(req,res){
+  const token = req.header('token');
+  let hay = false;
+  if (!token) {
+    hay = false;
+  }
+
+  try {
+    
+    jwt.verify(token, 'claveTekken');
+    hay = true;
+  } catch (error) {
+    hay = false;;
+  }
+  res.json(hay);
+}
+
+module.exports = {verificarToken,hayToken};

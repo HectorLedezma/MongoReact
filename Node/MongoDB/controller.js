@@ -33,9 +33,17 @@ const getUsers = async (req,res) =>{
   }
 }
 const getOneUser = async (req,res) =>{
+  const token = req.header('token');
+  const tokenFree = jwt.decode(token)
+  //console.log('Token: ',tokenFree)
+  const consul ={
+    rut:tokenFree.rut,
+    password:tokenFree.pass
+  };
+  
   console.log('Getting one user')
   try {
-    const docs = await Usuario.findOne(req.body);
+    const docs = await Usuario.findOne(consul);
     res.json(
       docs
     )  
@@ -46,20 +54,42 @@ const getOneUser = async (req,res) =>{
   }
 }
 
+const hayUser = async (req,res) =>{
+  console.log('Getting one user')
+  try {
+    let hay = false;
+    const doc = await Usuario.findOne(req.body);
+    console.log('body: ',req.body);
+    console.log('user: ',doc)
+    if(doc !== null && Object.keys(req.body).length > 0){
+      hay = true;
+    }
+    console.log('hay: ',hay);
+    res.json(hay);
+  } catch (error) {
+    res.json(false)
+  }
+}
+
 // Función para iniciar sesión y generar token
 const iniciarSesion = async (req, res) => {
   // Lógica para verificar credenciales y generar token JWT
   console.log('Login one user')
   try {
-    const docs = await Usuario.findOne(req.body);
-    //console.log(docs);
-    const Tekken = CreateToken(docs);
-    res.json(Tekken)
+    console.log('body: ',req.body);
+    if(Object.keys(req.body).length > 0){
+      const docs = await Usuario.findOne(req.body);
+      console.log('User log: ',docs);
+      const Tekken = CreateToken(docs);
+      res.json(Tekken)
+    }else{
+      res.send('Hubo un error al ingresar usuario')
+    }
     //console.log(Tekken);
   } catch (error) {
-    console.log('Hubo un error en obtener los datos')
+    console.log('Hubo un error al ingresar usuario')
     console.log(error)
-    res.send('Hubo un error en obtener los datos')
+    res.send('Hubo un error al ingresar usuario')
   }
 };
 
@@ -153,6 +183,7 @@ module.exports = {
   getUsers,
   getOneUser,
   iniciarSesion,
+  hayUser,
   getSalas,
   getSala,
   login,

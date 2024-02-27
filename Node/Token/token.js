@@ -9,8 +9,8 @@ function CreateToken(user){
         iat : moment().unix(),
         exp : moment().add(jornada,'minutes').unix()
     }
-    console.log(payload);
-    return jwt.sign(payload,'claveTekken',{expiresIn:'2m'});
+    //console.log(payload);
+    return jwt.sign(payload,'claveTekken');
 }
 
 module.exports = CreateToken
