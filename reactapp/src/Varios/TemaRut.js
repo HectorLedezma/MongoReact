@@ -38,7 +38,7 @@ export class Rut{
         return ok;
     }
     limpiaRut(rut){
-        let spg = rut.replace(/[.-]/g, '');
+        let spg = rut.replace(/[. -]/g, '');
         let snd = spg.slice(0, -1);
         let nRut = spg;
         if(spg[spg.length-1] === 'k' || spg[spg.length-1] === 'K'){

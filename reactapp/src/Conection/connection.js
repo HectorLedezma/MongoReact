@@ -66,7 +66,7 @@ export class Connection {
         
         try {
             //const req = await axios.request(bod)
-            const res = await axios.post(uri+"data/"+col,{params});
+            const res = await axios.post(uri+"data/"+col,params);
             this.blog = res.data;
         } catch (error) {
             this.blog = String(error);

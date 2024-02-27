@@ -1,5 +1,5 @@
 import cryptoJs from "crypto-js";
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { toast } from "react-toastify";
 import { Connection } from "../Conection/connection";
 import { Rut } from "../Varios/TemaRut";
@@ -33,7 +33,12 @@ function NewUser(){
 
     }
 
-    
+    useEffect(()=>{
+        if(rutOk){
+            console.log('consultando rut...')
+            existe(rutRef.current.value);
+        }
+    })
 
     const crear=(rut,nom,mail,pass)=>{
         let errorMeseage = ["Los campos\n"];
@@ -96,15 +101,9 @@ function NewUser(){
                     </div>
                     <input className="form-control" placeholder="RUT" ref={rutRef} onChange={ev=>{
                         ev.preventDefault();
-                        setRutOk(gestRut.validaRut(rutRef.current.value));
+                        setRutOk(gestRut.validaRut(gestRut.limpiaRut(rutRef.current.value)));
                         //console.log(limpiaRut(rutRef.current.value));
-                        if(rutOk){
-                            console.log('consultando rut...')
-                            existe(rutRef.current.value);
-                            setPrimera(false);
-                        }else{
-                            setPrimera(true);
-                        }
+                        
                         
                     }}/>
                 </div>
