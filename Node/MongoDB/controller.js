@@ -34,8 +34,9 @@ const getUsers = async (req,res) =>{
 }
 const getOneUser = async (req,res) =>{
   const token = req.header('token');
-  const tokenFree = jwt.decode(token)
-  //console.log('Token: ',tokenFree)
+  const tokenFree = jwt.verify(token, 'claveTekken');
+  //console.log('decoded: ',decoded);
+  console.log('Token: ',tokenFree)
   const consul ={
     rut:tokenFree.rut,
     password:tokenFree.pass
@@ -59,12 +60,12 @@ const hayUser = async (req,res) =>{
   try {
     let hay = false;
     const doc = await Usuario.findOne(req.body);
-    console.log('body: ',req.body);
-    console.log('user: ',doc)
+    //console.log('body: ',req.body);
+    //console.log('user: ',doc)
     if(doc !== null && Object.keys(req.body).length > 0){
       hay = true;
     }
-    console.log('hay: ',hay);
+    //console.log('hay: ',hay);
     res.json(hay);
   } catch (error) {
     res.json(false)
@@ -79,9 +80,9 @@ const iniciarSesion = async (req, res) => {
     console.log('body: ',req.body);
     if(Object.keys(req.body).length > 0){
       const docs = await Usuario.findOne(req.body);
-      console.log('User log: ',docs);
+      //console.log('User log: ',docs);
       const Tekken = CreateToken(docs);
-      console.log('Token a entregar: ',Tekken);
+      //console.log('Token a entregar: ',Tekken);
       res.json(Tekken)
     }else{
       res.send('Hubo un error al ingresar usuario')

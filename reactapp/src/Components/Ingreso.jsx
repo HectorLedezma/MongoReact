@@ -20,7 +20,7 @@ function Ingreso(){
         con.leerUno('/usuario/',{"rut":gestRut.limpiaRut(rut)}).then(data=>{
             if(data !== null){
                 if(data.password === cryptoJs.SHA256(pass).toString()){
-                    console.log('archivo: ingreso.jsx');
+                    //console.log('archivo: ingreso.jsx');
                 }else{
                     toast.error("El RUT o contraseña son incorrectos",{position:'top-center',autoClose:5000});    
                 }

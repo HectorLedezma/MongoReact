@@ -22,7 +22,7 @@ function NewUser(){
     function existe(rut){
         const con = new Connection();
         con.leerSiHay('/usuario/hay',{"rut":gestRut.limpiaRut(rut)}).then(data=>{
-            console.log(rut,' existe: ',data)
+            //console.log(rut,' existe: ',data)
             setOcupado(data);
             /*if(data !== null){
                 setOcupado(true);

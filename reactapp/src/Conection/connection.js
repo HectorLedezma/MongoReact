@@ -57,9 +57,26 @@ export class Connection {
         
         try {
             //const req = await axios.request(bod)
+            console.log('leyendo uno: ',params)
             const res = await axios.post(uri+"data/"+col,params);
+            
             this.blog = res.data;
         } catch (error) {
+            console.log(error)
+            this.blog = String(error);
+        }
+        return this.blog
+    }
+    async leerUnoget(col,params){
+        
+        try {
+            //const req = await axios.request(bod)
+            console.log('leyendo uno: ',params)
+            const res = await axios.get(uri+"data/"+col,params);
+            
+            this.blog = res.data;
+        } catch (error) {
+            console.log(error)
             this.blog = String(error);
         }
         return this.blog

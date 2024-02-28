@@ -15,6 +15,7 @@ const router = express.Router();
 router.post('/usuarios/new', addUser);
 router.post('/usuarios/todo',verificarToken, getUsers);
 router.post('/usuario/',verificarToken, getOneUser);
+router.get('/gusuario/',verificarToken, getOneUser);
 router.get('/usuario/token',hayToken);
 router.post('/usuario/hay',hayUser);
 router.post('/login',iniciarSesion)

@@ -47,11 +47,11 @@ function OldUser(){
                 const caduca = 2;
                 const caducaDate = new Date();
                 caducaDate.setMinutes(caducaDate.getMinutes()+caduca);
-                console.log('Token de usuario',token);
+                //console.log('Token de usuario',token);
                 cookie.set("UserToken",token,{expires:caducaDate,sameSite:'strict'});
                 navigate('/user');
             }else{
-                console.log('Token: ',token)
+                //console.log('Token: ',token)
                 toast.error("El RUT o contraseña son incorrectos",{position:'top-center',autoClose:5000});
             }
         }).catch(error=>{
