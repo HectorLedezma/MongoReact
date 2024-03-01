@@ -85,6 +85,14 @@ function MainPage(props){
     const location = useLocation();
     const cookie = new Cookies();
     const [logued,setLog] = useState(false);
+    
+    const cargaLog = () =>{
+        const con = new Connection();
+        con.log(cookie.get('UserToken')).then(loged =>{
+            //console.log('logueado (main): ',loged);     
+            setLog(loged)
+        })
+    }
 
     useEffect(()=>{
         const con = new Connection();
@@ -158,6 +166,7 @@ function MainPage(props){
                                             ev=>{
                                                 ev.preventDefault();
                                                 setNavVal(4);
+                                                cargaLog();
                                                 if(logued){
                                                     navi('/user')
                                                 }else{

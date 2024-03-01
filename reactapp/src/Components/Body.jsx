@@ -1,6 +1,6 @@
 import Cookies from "universal-cookie";
 import Login from "../Pages/Login";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { Connection } from "../Conection/connection";
 //import cryptoJs from "crypto-js";
 //import { Rut } from "../Varios/TemaRut";
@@ -20,7 +20,7 @@ function Body(props){
         })
     })
     const cookie = new Cookies();
-    const navi = useNavigate();
+    //const navi = useNavigate();
     switch (props.route) {
         case '/salas':
             return(//se puede mostrar la vista de las salas
@@ -32,8 +32,9 @@ function Body(props){
                     <Profile/>
                 )
             }else{
-                navi('/login');
-                break;
+                return(//ingreso de usuario
+                    <Login/>
+                )
             }
             
         case '/login':
