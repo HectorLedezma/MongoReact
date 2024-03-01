@@ -3,8 +3,8 @@ const jwt = require('jsonwebtoken');
 
 const verificarToken = (req, res, next) => {
   const token = req.header('token');
-  console.log('Token de usuario: ',token);
-  if (token !== '') {
+  //console.log('Token de usuario: ',token);
+  if (token === '') {
     return res.status(401).json({ msg: 'No hay token, autorización denegada' });
   }
 

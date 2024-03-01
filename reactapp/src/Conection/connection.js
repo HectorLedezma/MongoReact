@@ -71,9 +71,11 @@ export class Connection {
         
         try {
             //const req = await axios.request(bod)
-            console.log('leyendo uno: ',params)
-            const res = await axios.get(uri+"data/"+col,params);
             
+            //console.log('URL: ',uri+"data/"+col);
+            //console.log('parámetros: ',params)
+            const res = await axios.get(uri+"data/"+col,{headers:params});
+            //console.log('respuesta: ',res);
             this.blog = res.data;
         } catch (error) {
             console.log(error)
