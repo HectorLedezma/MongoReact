@@ -34,23 +34,19 @@ const getUsers = async (req,res) =>{
 }
 const getOneUser = async (req,res) =>{
   const token = req.header('token');
-  const tokenFree = jwt.verify(token, 'claveTekken');
-  //console.log('decoded: ',decoded);
-  console.log('Token: ',tokenFree)
-  const consul ={
-    rut:tokenFree.rut,
-    password:tokenFree.pass
-  };
-  
-  console.log('Getting one user')
   try {
+    const tokenFree = jwt.verify(token, 'claveTekken');
+    const consul ={
+      rut:tokenFree.rut,
+      password:tokenFree.pass
+    };
     const docs = await Usuario.findOne(consul);
     res.json(
       docs
     )  
   } catch (error) {
     console.log('Hubo un error en obtener los datos')
-    console.log(error)
+    //console.log(error)
     res.send('Hubo un error en obtener los datos')
   }
 }
