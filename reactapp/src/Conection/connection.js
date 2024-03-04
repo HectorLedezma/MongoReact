@@ -68,19 +68,8 @@ export class Connection {
         return this.blog
     }
     async leerUnoget(col,params){
-        
-        try {
-            //const req = await axios.request(bod)
-            
-            //console.log('URL: ',uri+"data/"+col);
-            //console.log('parámetros: ',params)
-            const res = await axios.get(uri+"data/"+col,{headers:params});
-            //console.log('respuesta: ',res);
-            this.blog = res.data;
-        } catch (error) {
-            console.log(error)
-            this.blog = String(error);
-        }
+        const res = await axios.get(uri+"data/"+col,{headers:params});
+        this.blog = res.data;
         return this.blog
     }
     async leerSiHay(col,params){

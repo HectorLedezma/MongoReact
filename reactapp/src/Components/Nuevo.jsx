@@ -35,7 +35,7 @@ function NewUser(){
 
     useEffect(()=>{
         if(rutOk){
-            console.log('consultando rut...')
+            //console.log('consultando rut...')
             existe(rutRef.current.value);
         }
     })
