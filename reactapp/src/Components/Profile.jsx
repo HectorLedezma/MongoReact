@@ -21,7 +21,7 @@ function Profile(){
             setData(newDatos);
         }).catch(error=>{
             //console.log('Error en Profile: ',error);
-            toast.error("Los siento, tu sesión a expirado",{position:'top-center',autoClose:5000});
+            toast.error("Lo siento, tu sesión a expirado",{position:'top-center',autoClose:5000});
             navi('/login')
         })
     }
@@ -30,22 +30,22 @@ function Profile(){
 
 
     return(<div  className="p-3">
-        <div className="bg-light m-3 p-3">
+        <div className="bg-light m-3 p-3 rounded">
             <div className="text-center">
-                <h1 className="">perfil de usuario</h1>
+                <h1 className="fs-1 text-primary fw-bolder">Perfil de usuario</h1>
             </div>
             <div>
-                <div>
-                    <h3>Nombre:</h3>
-                    <h4>{data.Nombre}</h4>
+                <div className="d-flex align-items-baseline">
+                    <p className="me-1 fw-bolder fs-2 text-primary">Nombre:</p>
+                    <p className="fs-3">{data.Nombre}</p>
                 </div>
-                <div>
-                    <h3>RUT:</h3>
-                    <h5></h5>
+                <div className="d-flex align-items-baseline">
+                    <p className="me-1 fw-bolder fs-2 text-primary">RUT:</p>
+                    <p className="fs-3">{data.RUT}</p>
                 </div>
-                <div>
-                    <h3>Correo:</h3>
-                    <h5></h5>
+                <div className="d-flex align-items-baseline">
+                    <p className="me-1 fw-bolder fs-2 text-primary">Correo:</p>
+                    <p className="fs-3">{data.Correo}</p>
                 </div>
             </div>
         </div>
