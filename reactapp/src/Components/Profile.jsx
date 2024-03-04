@@ -3,13 +3,14 @@ import Cookies from "universal-cookie";
 import { Connection } from "../Conection/connection";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FiLogOut } from "react-icons/fi";
 
 function Profile(){
     const navi = useNavigate();
+    const coockie = new Cookies();
     const [data,setData] = useState({});
     const cargaData = () =>{
         const con = new Connection();
-        const coockie = new Cookies();
         con.leerUnoget('gusuario/',{'token':coockie.get('UserToken')}).then(datos=>{
             //console.log('datos de usuario: ',datos);
             const newDatos = {
@@ -21,15 +22,20 @@ function Profile(){
             setData(newDatos);
         }).catch(error=>{
             //console.log('Error en Profile: ',error);
-            toast.error("Lo siento, tu sesión a expirado",{position:'top-center',autoClose:5000});
+            toast.error("Lo siento, tu sesión a expirado", {position:'top-center',autoClose:5000});
             navi('/login')
         })
     }
     
     useEffect(cargaData)
 
+    const logout = () =>{
+        coockie.remove('UserToken');
+        navi('/login');
+    }
 
-    return(<div  className="p-3">
+    return(
+        <div  className="p-3">
         <div className="bg-light m-3 p-3 rounded">
             <div className="text-center">
                 <h1 className="fs-1 text-primary fw-bolder">Perfil de usuario</h1>
@@ -48,19 +54,12 @@ function Profile(){
                     <p className="fs-3">{data.Correo}</p>
                 </div>
             </div>
+            <div className="d-flex justify-content-center">
+                <button className="btn btn-danger btn-lg align-items-center"
+                onClick={logout}
+                ><FiLogOut className="mb-1 me-2" style={{'height':'100%'}}/>Cerrar sesion</button>
+            </div>
         </div>
-        
-        {/*<h3 className="text-light">{data}</h3>*/}
-        <button 
-            className="btn btn-primary"
-            onClick={ev=>{
-                ev.preventDefault();
-                //const cookie = new Cookies();
-                
-            }}
-        >
-            ver
-        </button>
     </div>)
 }
 
