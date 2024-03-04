@@ -103,7 +103,7 @@ function MainPage(props){
     })
 
     return(
-        <div>
+        <div className='d-flex flex-column' style={{'min-height':'100vh','margin':'0'}}>
             <header className='bg-primary p-2 d-flex align-items-center text-light'>
                 
                 <img alt="profile" className='border border-2 rounded-circle' src={PageProfile} style={{width:"100px"}}/>
@@ -196,10 +196,13 @@ function MainPage(props){
                 
             </header>
             
-            <div className='bg-dark' style={{'height':'100%'}}>
+            <div className='bg-dark' style={{'flex':'1'}}>
                 {/*<Paramets type={tipo}/>*/}
                 <Body route={location.pathname}/>
             </div>
+            <footer className='bg-info d-flex justify-content-center' style={{'height':'10%'}}>
+                <p >Proyecto LeaService</p>
+            </footer>
             <Outlet/>
         </div>
     )
