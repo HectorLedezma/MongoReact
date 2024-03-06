@@ -30,7 +30,7 @@ const req = http.request(options, (res) =>{
   // Fin de la respuesta
   res.on('end', () => {
     //console.log('datos: ',data.toString())
-    setList(JSON.parse(data));
+    setList(data);
   });
 });
 
@@ -53,7 +53,7 @@ const verificarToken = (req, res, next) => {
   //console.log('Token de usuario: ',lista());
   lista()
   //console.log(TokenList[0]);
-  if (token === '' || TokenList.includes(token)) {
+  if (token === '' || JSON.parse(TokenList).includes(token)) {
     return res.status(401).json({ msg: 'No hay token, autorización denegada' });
   }
   try {
