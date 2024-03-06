@@ -30,6 +30,10 @@ function Profile(){
     useEffect(cargaData)
 
     const logout = () =>{
+        
+        const con = new Connection();
+        con.crear('token',{"Token":coockie.get('UserToken')})
+
         coockie.remove('UserToken');
         navi('/login');
     }

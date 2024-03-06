@@ -44,7 +44,7 @@ function OldUser(){
         con.login({"rut":gestRut.limpiaRut(rut),"password":cryptoJs.SHA256(pass).toString()}).then(token => {
             if(token !== ''){
                 let cookie = new Cookies();
-                const caduca = 1;
+                const caduca = 5;
                 const caducaDate = new Date();
                 caducaDate.setMinutes(caducaDate.getMinutes()+caduca);
                 //console.log('Token de usuario',token);
