@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const moment = require('moment');
 
 function CreateToken(user){
-    const jornada = 1;
+    const jornada = 5;
     const payload = {
         rut : user.rut,
         pass: user.password,
