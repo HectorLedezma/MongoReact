@@ -17,8 +17,7 @@ const SchemaSalas = new mongoose.Schema({
 })
 
 const TokenSchema = new mongoose.Schema({
-  rut:String,
-  state:Boolean
+  Token:String
 })
 
 const Usuario = mongoose.model('Usuario', usuarioSchema,'User');
