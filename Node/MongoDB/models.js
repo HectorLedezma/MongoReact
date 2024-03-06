@@ -13,9 +13,16 @@ const SchemaSalas = new mongoose.Schema({
   Numero:String,
   Ubicacion: Object,
   Implementos: Array,
-  Horario: Array
+  Ocupada:Boolean
 })
-
+/*
+,
+        "Horario": {
+            "Dia":"",
+            "HoraInicio":"",
+            "HoraFin":""
+        }
+*/
 const TokenSchema = new mongoose.Schema({
   Token:String
 })

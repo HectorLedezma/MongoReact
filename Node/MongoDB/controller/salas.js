@@ -42,10 +42,20 @@ const getSala = async (req,res) =>{
 }
 //U de Salas
 
+const updateSala = async (req,res) =>{
+  try {
+    await Salas.updateOne(req.body.filter,req.body.update);
+    res.send("ok");
+  } catch (error) {
+    res.send(error);
+    console.log("Hubo un error al Actualizar el objeto")
+  }
+}
+
 //D de Salas
 
 /*
-const login = async (req,res) =>{
+  const login = async (req,res) =>{
   try {
     if(Object.keys(req.body).length !== 0){
       console.log(req.body)
@@ -86,5 +96,6 @@ const logout = async (req,res) =>{
 */
 module.exports = {
   getSalas,
-  getSala
+  getSala,
+  updateSala
 }
