@@ -25,11 +25,11 @@ const getSalas = async (req,res) =>{
   }
 }
 const getSala = async (req,res) =>{
-  console.log('Getting one Sala');
+  //console.log('Getting one Sala');
 
   const consul = req.body;
   try {
-    console.log("query",consul)
+    //console.log("query",consul)
     const docs = await Salas.find(consul);
     res.json(
       docs
