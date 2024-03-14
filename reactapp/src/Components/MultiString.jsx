@@ -13,14 +13,14 @@ function MultiString(){
     const buscaKeys = (obj,cant) => {
         let newCant = cant;
         for(let i = 0; i< tags.length;i++){
-            console.log(tags[i].props.obj,obj);
+            //console.log(tags[i].props.obj,obj);
             if(tags[i].props.obj === obj){
-                console.log('coinside')
+                //console.log('coinside')
                 newCant = Number(tags[i].props.cant)+Number(cant)+"";
                 tags.splice(i,1);
             }
         }
-        console.log('newKey:',obj+' x'+newCant);
+        //console.log('newKey:',obj+' x'+newCant);
         return(
             <div key={obj+' x'+newCant} obj={obj} cant={newCant} className="bg-info m-2 p-1 rounded">
                 <label className="d-flex">{obj+' x'+newCant} 
@@ -57,16 +57,16 @@ function MultiString(){
 
     }
     const Quitar = (obj) =>{
-        console.log('quitando ',obj)
+        //console.log('quitando ',obj)
         setTags((prevTags) => {
             const updatedTags = [...prevTags];
             for(let i = 0;i<updatedTags.length;i++){
                 if(updatedTags[i].props.obj === obj){
                     updatedTags.splice(i, 1);
-                    console.log(obj,' quitado');
+                    //console.log(obj,' quitado');
                 }
             }
-            console.log(updatedTags)
+            //console.log(updatedTags)
             return updatedTags;
         });
     }
