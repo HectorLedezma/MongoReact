@@ -4,7 +4,7 @@ import { MdDelete } from "react-icons/md";
 
 
 
-function MultiString(){
+function MultiString({onSubmit}){
     const objRef = useRef();
     const cantRef = useRef();
 
@@ -84,45 +84,51 @@ function MultiString(){
         //return input
     }
     
-
-    return (<div>
+/*
         
-        <div className="bg-light p-3 rounded me-2 ms-2">
+*/
+
+    return (
+        <div>
             
-            <div className="mb-2 d-flex justify-content-center input-group border border-primary rounded">
-                <input ref={objRef} className="form-control" 
-                placeholder="Objeto" type="text"/>
-            </div>
-
-            <div className="mt-2 mb-2 d-flex justify-content-center input-group border border-primary rounded">
-                <input ref={cantRef} onChange={ev=>{ev.preventDefault();
-                checkNumber(cantRef.current.value)}} className="form-control" 
-                placeholder="Cantidad" title="Ingrese solo números" required/>
-            </div>
-            
-        </div>
-
-        <div className="d-flex justify-content-center">
-            {tags}
-        </div>
-
-        <div className="mt-2 row justify-content-center">
-            <button className="btn btn-primary me-3" style={{width:'20%'}}
-            onClick={ev=>{
-                ev.preventDefault();
-                Agregar(objRef.current.value,cantRef.current.value);
+            <div className="bg-light p-3 rounded me-2 ms-2" id="input">
                 
-            }}
-            >Agregar <FaPlus className="ms-2"/></button>
+                <div className="mb-2 d-flex justify-content-center input-group border border-primary rounded">
+                    <input ref={objRef} className="form-control" 
+                    placeholder="Objeto" type="text"/>
+                </div>
 
-            <button className="btn btn-primary ms-3" style={{width:'20%'}}
-            onClick={ev=>{
-                ev.preventDefault();
-                console.log(tags);
-            }}
-            >Buscar <FaSearch className="ms-2"/></button>
+                <div className="mt-2 mb-2 d-flex justify-content-center input-group border border-primary rounded">
+                    <input ref={cantRef} onChange={ev=>{ev.preventDefault();
+                    checkNumber(cantRef.current.value)}} className="form-control" 
+                    placeholder="Cantidad" title="Ingrese solo números"/>
+                </div>
+                <div className="mt-2 row justify-content-center">
+                    <button className="btn btn-primary text-center " style={{width:'20%'}} formTarget="input"
+                        onClick={ev=>{
+                            ev.preventDefault();
+                            Agregar(objRef.current.value,cantRef.current.value);                
+                        }}
+                        >Agregar <FaPlus className="ms-1 me-1"/>
+                    </button>
+                </div>
+            </div>
+
+            <div className="d-flex justify-content-center mt-2">
+                {tags}
+            </div>
+
+            <div className="mt-2 row justify-content-center">
+                <button 
+                    className="btn btn-primary btn-lg text-center" 
+                    type="submit" 
+                    style={{width:'30%'}}
+                >
+                    Buscar <FaSearch className="ms-1 ms-1"/>
+                </button>
+            </div>
         </div>
-    </div>);
+    );
 }
 
 export default MultiString;

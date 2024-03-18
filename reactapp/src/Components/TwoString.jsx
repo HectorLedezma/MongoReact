@@ -15,7 +15,9 @@ function TwoString(){
                 <input ref={threeRef} className="form-control" placeholder="Piso" type="text"/>
             </div>
             <div className="mt-2 row justify-content-center">
-                <button className="btn btn-primary btn-lg" style={{width:'20%'}}>Buscar<FaSearch className="ms-2"/></button>
+                <button className="btn btn-primary btn-lg" type="submit" style={{width:'20%'}}>
+                    Buscar<FaSearch className="ms-2"/>
+                </button>
             </div>
         </div>
     )
