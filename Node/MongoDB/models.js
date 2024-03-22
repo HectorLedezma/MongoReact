@@ -10,8 +10,9 @@ const usuarioSchema = new mongoose.Schema({
 });
 
 const SchemaSalas = new mongoose.Schema({
-  Numero:String,
-  Ubicacion: Object,
+  Identificador:String,
+  Edificio:String,
+  Piso:String,
   Implementos: Array,
   Ocupada:Boolean
 })

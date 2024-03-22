@@ -1,10 +1,8 @@
 [
     {
-        "Numero":"1A1",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"1"
-        },
+        "Identificador":"1A1",
+        "Edificio":"A",
+        "Piso":"1",
         "Implementos": [
             {
                 "Objeto":"",
@@ -14,11 +12,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"2A1",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"1"
-        },
+        "Identificador":"2A1",
+        "Edificio":"A",
+        "Piso":"1",
         "Implementos": [
             {
                 "Objeto":"",
@@ -28,11 +24,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"3A1",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"1"
-        },
+        "Identificador":"3A1",
+        "Edificio":"A",
+        "Piso":"1",
         "Implementos": [
             {
                 "Objeto":"",
@@ -42,11 +36,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"4A1",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"1"
-        },
+        "Identificador":"4A1",
+        "Edificio":"A",
+        "Piso":"1",
         "Implementos": [
             {
                 "Objeto":"",
@@ -56,11 +48,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"5A1",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"1"
-        },
+        "Identificador":"5A1",
+        "Edificio":"A",
+        "Piso":"1",
         "Implementos": [
             {
                 "Objeto":"",
@@ -70,11 +60,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"6A1",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"1"
-        },
+        "Identificador":"6A1",
+        "Edificio":"A",
+        "Piso":"1",
         "Implementos": [
             {
                 "Objeto":"",
@@ -84,11 +72,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"7A1",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"1"
-        },
+        "Identificador":"7A1",
+        "Edificio":"A",
+        "Piso":"1",
         "Implementos": [
             {
                 "Objeto":"",
@@ -98,11 +84,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"8A1",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"1"
-        },
+        "Identificador":"8A1",
+        "Edificio":"A",
+        "Piso":"1",
         "Implementos": [
             {
                 "Objeto":"",
@@ -112,11 +96,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"9A1",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"1"
-        },
+        "Identificador":"9A1",
+        "Edificio":"A",
+        "Piso":"1",
         "Implementos": [
             {
                 "Objeto":"",
@@ -126,11 +108,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"10A1",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"1"
-        },
+        "Identificador":"10A1",
+        "Edificio":"A",
+        "Piso":"1",
         "Implementos": [
             {
                 "Objeto":"",
@@ -140,11 +120,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"1A2",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"2"
-        },
+        "Identificador":"1A2",
+        "Edificio":"A",
+        "Piso":"2",
         "Implementos": [
             {
                 "Objeto":"",
@@ -154,11 +132,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"2A2",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"2"
-        },
+        "Identificador":"2A2",
+        "Edificio":"A",
+        "Piso":"2",
         "Implementos": [
             {
                 "Objeto":"",
@@ -168,11 +144,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"3A2",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"2"
-        },
+        "Identificador":"3A2",
+        "Edificio":"A",
+        "Piso":"2",
         "Implementos": [
             {
                 "Objeto":"",
@@ -182,11 +156,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"4A2",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"2"
-        },
+        "Identificador":"4A2",
+        "Edificio":"A",
+        "Piso":"2",
         "Implementos": [
             {
                 "Objeto":"",
@@ -196,11 +168,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"5A2",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"2"
-        },
+        "Identificador":"5A2",
+        "Edificio":"A",
+        "Piso":"2",
         "Implementos": [
             {
                 "Objeto":"",
@@ -210,11 +180,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"6A2",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"2"
-        },
+        "Identificador":"6A2",
+        "Edificio":"A",
+        "Piso":"2",
         "Implementos": [
             {
                 "Objeto":"",
@@ -224,11 +192,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"7A2",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"2"
-        },
+        "Identificador":"7A2",
+        "Edificio":"A",
+        "Piso":"2",
         "Implementos": [
             {
                 "Objeto":"",
@@ -238,11 +204,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"8A2",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"2"
-        },
+        "Identificador":"8A2",
+        "Edificio":"A",
+        "Piso":"2",
         "Implementos": [
             {
                 "Objeto":"",
@@ -252,11 +216,9 @@
         "Ocupada":false
     },
     {
-        "Numero":"9A2",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"2"
-        },
+        "Identificador":"9A2",
+        "Edificio":"A",
+        "Piso":"2",
         "Implementos": [
             {
                 "Objeto":"",
@@ -266,11 +228,249 @@
         "Ocupada":false
     },
     {
-        "Numero":"10A2",
-        "Ubicacion": {
-            "Edificio":"A",
-            "Piso":"2"
-        },
+        "Identificador":"10A2",
+        "Edificio":"A",
+        "Piso":"2",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"1B1",
+        "Edificio":"B",
+        "Piso":"1",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"2B1",
+        "Edificio":"B",
+        "Piso":"1",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"3B1",
+        "Edificio":"B",
+        "Piso":"1",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"4B1",
+        "Edificio":"B",
+        "Piso":"1",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"5B1",
+        "Edificio":"B",
+        "Piso":"1",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"6B1",
+        "Edificio":"B",
+        "Piso":"1",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"7B1",
+        "Edificio":"B",
+        "Piso":"1",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"8B1",
+        "Edificio":"B",
+        "Piso":"1",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"9B1",
+        "Edificio":"B",
+        "Piso":"1",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"10B1",
+        "Edificio":"B",
+        "Piso":"1",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"1B2",
+        "Edificio":"B",
+        "Piso":"2",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"2B2",
+        "Edificio":"B",
+        "Piso":"2",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"3B2",
+        "Edificio":"B",
+        "Piso":"2",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"4B2",
+        "Edificio":"B",
+        "Piso":"2",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"5B2",
+        "Edificio":"B",
+        "Piso":"2",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"6B2",
+        "Edificio":"B",
+        "Piso":"2",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"7B2",
+        "Edificio":"B",
+        "Piso":"2",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"8B2",
+        "Edificio":"B",
+        "Piso":"2",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"9B2",
+        "Edificio":"B",
+        "Piso":"2",
+        "Implementos": [
+            {
+                "Objeto":"",
+                "Cantidad":0
+            }
+        ],
+        "Ocupada":false
+    },
+    {
+        "Identificador":"10B2",
+        "Edificio":"B",
+        "Piso":"2",
         "Implementos": [
             {
                 "Objeto":"",
