@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-//import { Connection } from "../Conection/connection";
-//import SalaTag from "../Components/SalaSheet";
+import { Connection } from "../Conection/connection";
+import SalaTag from "../Components/SalaSheet";
 import { Dropdown, Form } from "react-bootstrap";
 import MultiString from "../Components/MultiString";
 import TwoString from "../Components/TwoString";
@@ -8,7 +8,7 @@ import OneString from "../Components/OneString";
 
 
 function Salas(){
-/*
+
     const con = new Connection();
 
     const CreaList = (data) =>{
@@ -25,7 +25,7 @@ function Salas(){
     
     
     
-*/  
+  
     const [data,setData] = useState([]);
     const [params,setParams] = useState({"Ocupada":false})
     const [title,setTitle] = useState(' desocupadas')
@@ -42,13 +42,33 @@ function Salas(){
 
     const [inputNodes,setInputNodes] = useState([]);
 
-    const ConsultOne = (nodes) =>{
-        console.log(nodes[0].childNodes[0].value);
-        setParams({"Numero":nodes[0].childNodes[0].value})
+    const ConsultOne = (mode,nodes) =>{
+        let PreParams = {};
+        let entrada = nodes[0].childNodes[0].value;
+        let checked = mode? isChecked: !isChecked
+        if(entrada !== ''){
+            PreParams["Identificador"] = entrada
+        }    
+        if(!checked){
+            PreParams["Ocupada"] = false
+        }
+        setParams(PreParams);
     }
-    const ConsultTwo = (nodes) =>{
-        console.log(nodes[0].childNodes[0].value);
-        console.log(nodes[1].childNodes[0].value);
+    const ConsultTwo = (mode,nodes) =>{
+        let PreParams = {};
+        let Edificio = nodes[0].childNodes[0].value;
+        let Piso = nodes[1].childNodes[0].value;
+        let checked = mode? isChecked: !isChecked
+        if(!checked){
+            PreParams['Ocupada'] = false;
+        }
+        if(Edificio !== ''){
+            PreParams['Edificio'] = Edificio;
+        }
+        if(Piso !== ''){
+            PreParams['Piso'] = Piso;
+        }
+        setParams(PreParams);
     }
     const ConsultMulti = (nodes) =>{
         const list = nodes[1].childNodes;
@@ -65,6 +85,7 @@ function Salas(){
 
     const handleSwitchChange = () => {
         setIsChecked(!isChecked);
+        //console.log('Input:',inputNodes)
         if(isChecked){
             setTitle(' desocupadas');
         }else{
@@ -79,36 +100,45 @@ function Salas(){
         });
       }
 
-    const ConsultBuild = (nodes) =>{
+    const ConsultBuild = (mode,nodes) =>{
         try {
-            setInputNodes(nodes);
+            //console.log('Entrada',nodes)
             switch (inputVal) {
                 case 0:
-                    ConsultOne(nodes);
+                    ConsultOne(mode,nodes);
                     break;
                 case 1:
-                    ConsultTwo(nodes);
+                    ConsultTwo(mode,nodes);
                     break;
                 case 2:
                     ConsultMulti(nodes);
                     break;
                 default:
+                    //console.log('default')        
+                    if(isChecked){
+                        setParams({"Ocupada":false});
+                    }else{
+                        setParams({});
+                    }
                     break;
             }   
         } catch (error) {
+            //console.log('call Back')
+            if(isChecked){
+                setParams({"Ocupada":false});
+            }else{
+                setParams({});
+            }
             
         }
     }
 
     const CargaData = () =>{
-        
-        /*
+        esperar(1500);
         con.leerUno('sala',params).then(datos=>{
-            ///
-            esperar(500)
             setData(CreaList(datos))
         })
-        */
+        
     }
 
     useEffect(CargaData);
@@ -153,13 +183,19 @@ function Salas(){
                             className="text-light m-2"
                             checked={isChecked}
                             onChange={handleSwitchChange}
+                            onClick={ev=>{
+                                ev.preventDefault();
+                                //console.log('click switch');
+                                ConsultBuild(false,inputNodes);
+                            }}
                         />
                     </Form>
                 </div>
                 <form style={{width:'175vh'}} ref={inputRef} onSubmit={ev=>{
                     ev.preventDefault();
                     //console.log('Submit \n',inputRef.current)
-                    ConsultBuild(inputRef.current.childNodes[0].childNodes);
+                    setInputNodes(inputRef.current.childNodes[0].childNodes);
+                    ConsultBuild(true,inputRef.current.childNodes[0].childNodes);
                 }}>
                     {input}
                 </form>
