@@ -103,7 +103,7 @@ function MainPage(props){
     })
 
     return(
-        <div className='d-flex flex-column' style={{'min-height':'100vh','margin':'0'}}>
+        <div className='d-flex flex-column' style={{'minHeight':'100vh','margin':'0'}}>
             <header className='bg-primary p-2 d-flex align-items-center text-light'>
                 
                 <img alt="profile" className='border border-2 rounded-circle' src={PageProfile} style={{width:"100px"}}/>
