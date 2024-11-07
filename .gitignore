@@ -1,5 +1,4 @@
-Node/node_modules/
+Node/node_modules
 reactapp/node_modules
-reactapp/node_modules/.cache/default-development
 Mongocker/data
 
