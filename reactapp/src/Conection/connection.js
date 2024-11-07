@@ -1,8 +1,9 @@
 
 import { useEffect, useState } from "react";
-
 import axios from "axios";
-const uri = "http://localhost:8000/"
+
+
+const uri = process.env.REACT_APP_BACKEND_URI;
 
 export class Connection {
     constructor(){
@@ -80,6 +81,16 @@ export class Connection {
             this.blog = res.data;
         } catch (error) {
             this.blog = String(error);
+        }
+        return this.blog
+    }
+
+    async resumenPlant(){
+        try {
+            const res = await axios.get(uri+"data/plant-summary");
+            this.blog = res.data;
+        } catch (error) {
+            console.log(error)
         }
         return this.blog
     }
