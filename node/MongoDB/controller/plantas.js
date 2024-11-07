@@ -5,7 +5,7 @@ const {Plantas} = require('../Models/plantas');
 //R
 const GetResumen = async (req,res) =>{
     try {
-        const docs = await Plantas.find().select('nombre_comun nombre_cientifico')
+        const docs = await Plantas.find().select('nombre_comun nombre_cientifico image')
         console.log("Acceso desde: "+req.headers.host);
         res.json(docs);
     } catch (error) {
