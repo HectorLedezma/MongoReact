@@ -13,7 +13,7 @@
 }
 
 /*No Responsivo*/
-@media screen and (min-width: 994px){
+@media screen and (min-width: 640px){
     .page-titulo{
         width: 40%;
     }
