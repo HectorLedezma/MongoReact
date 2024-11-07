@@ -6,14 +6,16 @@ import { FaUser } from "react-icons/fa";
 //import Table from '../Components/table';
 //import Paramets from '../Components/Parametros';
 import Cookies from 'universal-cookie';
-import Body from '../Components/Body';
+import Body from '../Varios/Body';
 import { Connection } from '../Conection/connection';
+import '../Styles/responsive.css'
+import '../Styles/colors.css'
 
 // style={{width:"100%"}}
 function MainPage(props){
     const navi = useNavigate();
     const [navVal,setNavVal] = useState(0);
-    const nav2 = useRef();
+    //const nav2 = useRef();
     const nav3 = useRef();
 
     //const [datos,setDatos] = useState([])
@@ -38,8 +40,7 @@ function MainPage(props){
         setIsOpen(!isOpen);
     };
 
-/*
-    const cargar = (route,params) =>{
+/*const cargar = (route,params) =>{
         const conn = new Connection();//se establece conexión a la API
 
         let leer = conn.leerUno(route,params);// se llama la data de la DB en una promesa
@@ -79,8 +80,7 @@ function MainPage(props){
                                     ref={nav1} 
                                     className={`text-black link-light nav-link me-1 ms-1 ${(navVal === 2) ? 'border rounded p-1 m-1' : ''}`}>
                                             Usuarios
-                                    </NavLink>
-*/
+                                    </NavLink>*/
 
     const location = useLocation();
     const cookie = new Cookies();
@@ -104,7 +104,7 @@ function MainPage(props){
 
     return(
         <div className='d-flex flex-column' style={{'minHeight':'100vh','margin':'0'}}>
-            <header className='bg-primary p-2 d-flex align-items-center text-light'>
+            <header className='p-2 d-flex align-items-center text-light'>
                 
                 <img alt="profile" className='border border-2 rounded-circle' src={PageProfile} style={{width:"100px"}}/>
                 <div className='m-2 page-titulo' style={{width:"100%"}}>
@@ -113,7 +113,7 @@ function MainPage(props){
                 </div>
 
                 <div className='ms-2 me-2'>
-                    <nav className="navbar navbar-expand-lg bg-primary">
+                    <nav className="navbar navbar-expand-lg">
                         <div className="container-fluid justify-content-end">
                             
                             <button 
@@ -138,12 +138,11 @@ function MainPage(props){
                                         nav-menu z-3
                                         navbar-nav 
                                         align-items-center 
-                                        justify-content-end 
-                                        bg-primary
+                                        justify-content-end
                                     " 
                                 >
-                                    
-                                    <NavLink onClick={
+                            {
+                                /*<NavLink onClick={
                                             ev=>{
                                                 ev.preventDefault();
                                                 setNavVal(3);
@@ -160,8 +159,8 @@ function MainPage(props){
                                             `
                                         }>
                                             Salas
-                                    </NavLink>
-
+                                    </NavLink>*/
+                            }
                                     <NavLink onClick={
                                             ev=>{
                                                 ev.preventDefault();
@@ -201,7 +200,7 @@ function MainPage(props){
                 <Body route={location.pathname}/>
             </div>
             <footer className='bg-info d-flex justify-content-center' style={{'height':'10%'}}>
-                <p >Proyecto LeaService</p>
+                <p >Proyecto M.E.R.N</p>
             </footer>
             <Outlet/>
         </div>
