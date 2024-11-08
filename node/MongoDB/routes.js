@@ -1,7 +1,8 @@
 // routes/usuarioRoutes.js
 const express = require('express');
 
-const {GetResumen} = require('./controller/plantas')
+const {GetResumen,GetAllOfOne} = require('./controller/plantas')
+
 
 const {
     getSalas,
@@ -36,5 +37,7 @@ router.post('/sala/',getSala);
 router.post('/sala/update',updateSala);
 
 router.get('/plant-summary',GetResumen)
+router.get('/one-plant-complete',GetAllOfOne)
+
 
 module.exports = router;
