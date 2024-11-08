@@ -1,5 +1,10 @@
 .plant-card{
-    background-color: peru;
+    background-color: rgb(132, 205, 63);
+    color: rgb(255, 255, 255);
+}
+
+.plant-card:hover{
+    background-color: rgb(46, 124, 27);
     border-color: #268E00 !important;
 }
 
