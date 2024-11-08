@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Routes,Route } from 'react-router-dom'
+import {Routes,Route, useParams } from 'react-router-dom'
 import MainPage from '../Pages/main';
 import RouteCare from '../Varios/RouteCare';
 import Cookies from 'universal-cookie';
@@ -17,6 +17,11 @@ function Rutas(){
         })
     });
 
+    const MainID = () =>{
+        let {id} = useParams();
+        return <MainPage id={id}/>
+    }
+
     return(
         <Routes>
             <Route path='/' element={<MainPage/>}/>
@@ -25,6 +30,9 @@ function Rutas(){
                 <Route path='/user' element={<MainPage/>}/>
             </Route>
             <Route path='/salas' element={<MainPage/>}/>
+            <Route path='/document'>
+                <Route path=':id' element={<MainID/>}/>
+            </Route>
         </Routes>
     )
 }

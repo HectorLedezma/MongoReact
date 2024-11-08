@@ -106,7 +106,12 @@ function MainPage(props){
         <div className='d-flex flex-column' style={{'minHeight':'100vh','margin':'0'}}>
             <header className='p-2 d-flex align-items-center text-light'>
                 
-                <img alt="profile" className='border border-2 rounded-circle' src={PageProfile} style={{width:"100px"}}/>
+                <img role='button' alt="profile" className='border border-2 rounded-circle' src={PageProfile} style={{width:"100px"}}
+                    onClick={ev=>{
+                        ev.preventDefault();
+                        navi('/')
+                    }}
+                />
                 <div className='m-2 page-titulo' style={{width:"100%"}}>
                     <h1>Pagina de Prueba</h1>
                     <h3>encabezado de la pagina</h3>
@@ -197,7 +202,7 @@ function MainPage(props){
             
             <div className='bg-dark' style={{'flex':'1'}}>
                 {/*<Paramets type={tipo}/>*/}
-                <Body route={location.pathname}/>
+                <Body route={location.pathname} id={props.id}/>
             </div>
             <footer className='bg-info d-flex justify-content-center' style={{'height':'10%'}}>
                 <p >Proyecto M.E.R.N</p>

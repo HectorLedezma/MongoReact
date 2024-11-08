@@ -8,6 +8,7 @@ import Profile from "../Components/Profile";
 import Salas from "../Pages/salas";
 import { useEffect, useState } from "react";
 import Default from "../Pages/default";
+import Documents from "../Pages/document";
 
 function Body(props){
     //const gestRut = new Rut();
@@ -22,6 +23,7 @@ function Body(props){
             console.log("no hay token")
         });
     })
+
     const cookie = new Cookies();
     //const navi = useNavigate();
     switch (props.route) {
@@ -43,6 +45,10 @@ function Body(props){
         case '/login':
             return(//ingreso de usuario
                 <Login/>
+            )
+        case '/document/'+props.id:
+            return(
+                <Documents id={props.id}/>
             )
         default:
             return(

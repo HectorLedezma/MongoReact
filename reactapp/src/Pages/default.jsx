@@ -4,11 +4,13 @@ import '../Styles/colors.css';
 import '../Styles/responsive.css'
 import '../Styles/borders.css'
 import '../Styles/functions.css'
+import { Outlet, useNavigate } from "react-router-dom";
 
 function Default(){
 
     const [data,SetData] = useState([<h1 key="0">Cargando</h1>]);
     const [loaded,SetLoad] = useState(false);
+    const navi = useNavigate();
 
     useEffect(()=>{
         if(!loaded){
@@ -32,7 +34,10 @@ function Default(){
             let list = [];
             result.forEach(d=>{
                 list.push(
-                    <div className="plant-card border-3 rounded m-3" key={d._id}>
+                    <div className="plant-card border-3 rounded m-3" key={d._id} onClick={ev=>{
+                        ev.preventDefault();
+                        navi('/document/'+d._id);
+                    }}>
                         <div className="d-flex justify-content-center">
                             {nombre_comun(d.nombre_comun)}
                         </div>
@@ -52,7 +57,7 @@ function Default(){
             SetLoad(true);
         }).catch(e=>{
             console.log(e);
-            SetData([<h1 key="1">Hubo un Problema al cargar los datos</h1>]);
+            SetData([<h1 className="text-ligth" key="1">Hubo un Problema al cargar los datos</h1>]);
         });
 
     }
@@ -60,6 +65,7 @@ function Default(){
     return(
         <div className="d-flex flex-wrap justify-content-evenly">
             {data}
+            <Outlet/>
         </div>
     )
 }
