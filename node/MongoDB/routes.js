@@ -37,7 +37,7 @@ router.post('/sala/',getSala);
 router.post('/sala/update',updateSala);
 
 router.get('/plant-summary',GetResumen)
-router.get('/one-plant-complete',GetAllOfOne)
+router.post('/one-plant-complete',GetAllOfOne)
 
 
 module.exports = router;
