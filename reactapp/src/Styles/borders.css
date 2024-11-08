@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 640px){
-    .login-footer{
+    .login-footer, .document-page {
         border-radius: 0;
-    }   
+    }
 }

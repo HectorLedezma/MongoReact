@@ -34,6 +34,10 @@
     border-radius: 10px;
 }
 
+.font-size-control{
+    font-size: 100%;
+}
+
 .login-box{
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
@@ -41,6 +45,23 @@
 
 .login-body{
     margin-bottom: 0;
+}
+
+.doc-image{
+    height: 450px;
+    width: 450px;
+}
+
+.doc-body{
+    display: flex;
+}
+
+.doc-ficha{
+    width: 40% !important;
+}
+
+.doc-field{
+    height: fit-content !important;
 }
 
 
@@ -91,8 +112,24 @@
         width: 100px;
     }
 
+    .doc-image{
+        height: 150px;
+        width: 150px;
+    }
+
     .document-page{
         margin: 0;
-        border-radius: 0px;
+    }
+
+    .font-size-control{
+        font-size: 50%;
+    }
+
+    .doc-body{
+        display: block;
+    }
+
+    .doc-ficha{
+        width: 100% !important;
     }
 }
