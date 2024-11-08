@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Connection } from "../Conection/connection";
+import { Connection } from "../Connection/connection";
 import '../Styles/colors.css';
 import '../Styles/responsive.css'
 import '../Styles/borders.css'

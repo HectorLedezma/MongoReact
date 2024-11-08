@@ -2,12 +2,12 @@ import {React, useEffect, useRef, useState} from 'react';
 import {Outlet,NavLink,useLocation,useNavigate } from 'react-router-dom'
 import PageProfile from '../Images/PageProfile.svg'
 import { FaUser } from "react-icons/fa";
-//import {Connection/*, TraeSala]*/} from '../Conection/connection';
+//import {Connection/*, TraeSala]*/} from '../Connection/connection';
 //import Table from '../Components/table';
 //import Paramets from '../Components/Parametros';
 import Cookies from 'universal-cookie';
 import Body from '../Varios/Body';
-import { Connection } from '../Conection/connection';
+import { Connection } from '../Connection/connection';
 import '../Styles/responsive.css'
 import '../Styles/colors.css'
 

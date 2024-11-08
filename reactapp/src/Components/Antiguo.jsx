@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Rut } from "../Varios/TemaRut"
 import { HiEye,HiEyeOff,HiLockClosed,HiMail,HiUser } from "react-icons/hi";
-import { Connection } from "../Conection/connection";
+import { Connection } from "../Connection/connection";
 import { toast } from "react-toastify";
 import cryptoJs from "crypto-js";
 import { useNavigate } from "react-router-dom";

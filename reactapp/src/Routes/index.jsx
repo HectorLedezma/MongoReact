@@ -3,7 +3,7 @@ import {Routes,Route } from 'react-router-dom'
 import MainPage from '../Pages/main';
 import RouteCare from '../Varios/RouteCare';
 import Cookies from 'universal-cookie';
-import { Connection } from '../Conection/connection';
+import { Connection } from '../Connection/connection';
 
 function Rutas(){
     const cookie = new Cookies();

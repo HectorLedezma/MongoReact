@@ -1,7 +1,7 @@
 import Cookies from "universal-cookie";
 import Login from "../Pages/Login";
 //import { useNavigate } from "react-router-dom";
-import { Connection } from "../Conection/connection";
+import { Connection } from "../Connection/connection";
 //import cryptoJs from "crypto-js";
 //import { Rut } from "../Varios/TemaRut";
 import Profile from "../Components/Profile";

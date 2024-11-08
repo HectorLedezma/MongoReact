@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Connection } from "../Conection/connection";
+import { Connection } from "../Connection/connection";
 import SalaTag from "../Components/SalaSheet";
 import { Dropdown, Form } from "react-bootstrap";
 import MultiString from "../Components/MultiString";

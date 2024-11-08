@@ -1,7 +1,7 @@
 import cryptoJs from "crypto-js";
 import { useEffect, useRef, useState } from "react"
 import { toast } from "react-toastify";
-import { Connection } from "../Conection/connection";
+import { Connection } from "../Connection/connection";
 import { Rut } from "../Varios/TemaRut";
 import { HiUser,HiMail, HiEye, HiEyeOff, HiLockClosed } from "react-icons/hi";
 

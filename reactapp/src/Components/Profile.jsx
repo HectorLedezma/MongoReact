@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Cookies from "universal-cookie";
-import { Connection } from "../Conection/connection";
+import { Connection } from "../Connection/connection";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FiLogOut } from "react-icons/fi";
