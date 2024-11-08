@@ -95,6 +95,21 @@ export class Connection {
         return this.blog
     }
 
+    async AllDataPlant(id){
+        try {
+            
+            const params = {
+                "id":id
+            }
+            console.log(JSON.stringify(params));
+            const res = await axios.post(uri+"data/one-plant-complete",params);
+            this.blog = res.data;
+        } catch (error) {
+            console.log(error)
+        }
+        return this.blog
+    }
+
 }
 
 
