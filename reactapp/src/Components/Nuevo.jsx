@@ -91,79 +91,81 @@ function NewUser(){
     //const [obligOk,setObligOk] = useState(false);
     
     return(
-        <form className="m-3 p-3 bg-light rounded">
+        <form className="bg-light login-box mb-n2">
             <h3 className="text-center">¿Nuevo Usuario?</h3>
             <h4 className="text-center">Regístrate aquí</h4>
-            <div className=" d-flex justify-content-center">
-                <div className="mt-1 mb-1 input-group" style={{width:"75%"}}>
-                    <div className="input-group-text">
-                        <HiUser/>
+            <div className="inputs">
+                <div className=" d-flex justify-content-center">
+                    <div className="form-input mt-1 mb-1 input-group">
+                        <div className="input-group-text">
+                            <HiUser/>
+                        </div>
+                        <input className="form-control" placeholder="RUT" ref={rutRef} onChange={ev=>{
+                            ev.preventDefault();
+                            setRutOk(gestRut.validaRut(gestRut.limpiaRut(rutRef.current.value)));
+                            //console.log(limpiaRut(rutRef.current.value));
+                            
+                            
+                        }}/>
                     </div>
-                    <input className="form-control" placeholder="RUT" ref={rutRef} onChange={ev=>{
-                        ev.preventDefault();
-                        setRutOk(gestRut.validaRut(gestRut.limpiaRut(rutRef.current.value)));
-                        //console.log(limpiaRut(rutRef.current.value));
-                        
-                        
-                    }}/>
+                </div>            
+                <div className="d-flex justify-content-center">
+                    <p className="text-danger text-center me-1 ms-1" hidden={rutOk}>El RUT no es valido</p>
+                    <p className="text-danger text-center me-1 ms-1" hidden={!ocupado}>El usuario ya existe</p>
+                </div>
+                <div className=" d-flex justify-content-center">
+                    <div className="form-input mt-1 mb-1 input-group">
+                        <div className="input-group-text">
+                            <HiUser/>
+                        </div>
+                        <input className="form-control" placeholder="Nombre" ref={nomRef}/>
+                    </div>
+                </div>
+                <div className=" d-flex justify-content-center">
+                    <div className="form-input mt-1 mb-1 input-group">
+                        <div className="input-group-text">
+                            <HiMail/>
+                        </div>
+                        <input className="form-control" placeholder="Correo" ref={mailRef} type="email"/>
+                    </div>
+                </div>
+                <div className=" d-flex justify-content-center">
+                    <div className="form-input mt-1 mb-1 input-group">
+                        <div className="input-group-text">
+                            <HiLockClosed />
+                        </div>
+                        <input className="form-control" placeholder="Contraseña" ref={passRef} type={!view? "text":"password"}/>
+                        <div className="input-group-text">
+                            <div role="button" onClick={ev=>{ev.preventDefault();setView(!view);}}>{view ? (<HiEye/>):(<HiEyeOff/>)}</div>
+                        </div>
+                    </div>
+                </div>
+                <div className=" d-flex justify-content-center">
+                    <div className="form-input mt-1 mb-1 input-group">
+                        <div className="input-group-text">
+                            <HiLockClosed />
+                        </div>
+                        <input className="form-control" onChange={
+                            ev=>{
+                                ev.preventDefault();
+                                if(passRef.current.value !== pass2Ref.current.value){
+                                    setPassOk(false);
+                                }else{
+                                    setPassOk(true);
+                                }
+                            }
+                        } placeholder="Confirma la contraseña" ref={pass2Ref} type={!view2? "text":"password"}/>
+                        <div className="input-group-text">
+                            <div role="button" onClick={ev=>{ev.preventDefault();setView2(!view2);}}>{view2 ? (<HiEye/>):(<HiEyeOff/>)}</div>
+                        </div>
+                    </div>
+                </div>
+                <div className="d-flex justify-content-center">
+                    <p className="text-danger text-center" hidden={passOk}>las contraseñas no coinciden</p>
                 </div>
             </div>
             
-            <div className="d-flex justify-content-center">
-                <p className="text-danger text-center me-1 ms-1" hidden={rutOk}>El RUT no es valido</p>
-                <p className="text-danger text-center me-1 ms-1" hidden={!ocupado}>El usuario ya existe</p>
-            </div>
-            <div className=" d-flex justify-content-center">
-                <div className="mt-1 mb-1 input-group"  style={{width:"75%"}}>
-                    <div className="input-group-text">
-                        <HiUser/>
-                    </div>
-                    <input className="form-control" placeholder="Nombre" ref={nomRef}/>
-                </div>
-            </div>
-            <div className=" d-flex justify-content-center">
-                <div className="mt-1 mb-1 input-group" style={{width:"75%"}}>
-                    <div className="input-group-text">
-                        <HiMail/>
-                    </div>
-                    <input className="form-control" placeholder="Correo" ref={mailRef} type="email"/>
-                </div>
-            </div>
-            <div className=" d-flex justify-content-center">
-                <div className="mt-1 mb-1 input-group" style={{width:"75%"}}>
-                    <div className="input-group-text">
-                        <HiLockClosed />
-                    </div>
-                    <input className="form-control" placeholder="Contraseña" ref={passRef} type={!view? "text":"password"}/>
-                    <div className="input-group-text">
-                        <div role="button" onClick={ev=>{ev.preventDefault();setView(!view);}}>{view ? (<HiEye/>):(<HiEyeOff/>)}</div>
-                    </div>
-                </div>
-            </div>
-            <div className=" d-flex justify-content-center">
-                <div className="mt-1 mb-1 input-group" style={{width:"75%"}}>
-                    <div className="input-group-text">
-                        <HiLockClosed />
-                    </div>
-                    <input className="form-control" onChange={
-                        ev=>{
-                            ev.preventDefault();
-                            if(passRef.current.value !== pass2Ref.current.value){
-                                setPassOk(false);
-                            }else{
-                                setPassOk(true);
-                            }
-                        }
-                    } placeholder="Confirma la contraseña" ref={pass2Ref} type={!view2? "text":"password"}/>
-                    <div className="input-group-text">
-                        <div role="button" onClick={ev=>{ev.preventDefault();setView2(!view2);}}>{view2 ? (<HiEye/>):(<HiEyeOff/>)}</div>
-                    </div>
-                </div>
-            </div>
-            <div className="d-flex justify-content-center">
-                <p className="text-danger text-center" hidden={passOk}>las contraseñas no coinciden</p>
-            </div>
-            <div className="mt-1 mb-1 d-flex justify-content-center">
+            <div className="mt-1 d-flex justify-content-center">
                 <button onClick={
                     ev=>{
                         ev.preventDefault();
@@ -178,7 +180,7 @@ function NewUser(){
                             toast.error("Hay campos inválidos",{position:'top-center',autoClose:5000});
                         }
                     }
-                } className="btn btn-primary btn-lg">Registrar</button>
+                } className="btn btn-primary btn-lg mb-3">Registrar</button>
             </div>
         </form>
     )

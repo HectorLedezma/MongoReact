@@ -17,7 +17,7 @@ function OldUser(){
     const navigate = useNavigate();
 
     const passInput = (
-        <div className="mt-1 mb-3 d-flex justify-content-center input-group border border-primary rounded" style={{width:"75%"}}>
+        <div className="form-input mt-1 mb-3 d-flex justify-content-center input-group border border-primary rounded">
             <div className="input-group-text">
                 <HiLockClosed />
             </div>
@@ -29,7 +29,7 @@ function OldUser(){
     )
 
     const mailInput = (
-        <div className="mt-1 mb-3 d-flex justify-content-center input-group border border-primary rounded" style={{width:"75%"}}>
+        <div className="form-input mt-1 mb-3 d-flex justify-content-center input-group border border-primary rounded">
             <div className="input-group-text">
                 <HiMail/>
             </div>
@@ -86,12 +86,12 @@ function OldUser(){
     }
 
     return(
-        <div className="bg-light rounded">
-            <form className="m-3 p-3">
+        <div className="bg-light login-box mb-n1">
+            <form className="form-box">
                 <h3 className="text-center">{`${rec?'¿Olvidaste tu contraseña?':'¿Ya tienes una cuenta?'}`}</h3>
                 <h4 className="text-center">{`${rec?'Recupera aquí':'Ingresa aquí'}`}</h4>
                 <div className="d-flex justify-content-center">
-                    <div className="mt-3 mb-1 input-group border border-primary rounded" style={{width:"75%"}}>
+                    <div className="form-input mt-3 mb-1 input-group border border-primary rounded">
                         <div className="input-group-text">
                             <HiUser/>
                         </div>
@@ -129,7 +129,7 @@ function OldUser(){
                 <div className="mt-3 d-flex justify-content-center">
                     <h6>{`¿${rec? 'Recordaste':'Olvidaste'} tu contraseña?`}</h6>
                 </div>
-                <div className="mb-3 d-flex justify-content-center">
+                <div className="d-flex justify-content-center">
                     <p 
                         role="button" 
                         className="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"

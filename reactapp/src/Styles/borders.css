@@ -3,3 +3,14 @@
     border-style: outset;
     border-color: #268E00 !important;
 }
+
+.login-footer{
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+
+@media screen and (max-width: 640px){
+    .login-footer{
+        border-radius: 0;
+    }   
+}

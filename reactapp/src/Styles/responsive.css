@@ -3,6 +3,18 @@
     width: 40%;
 }
 
+.login-page{
+    margin: 1em;
+    padding: 1em;
+}
+
+.form-input{
+    width: 75% !important;
+}
+
+.form-box{
+    margin: 1em;
+}
 
 .nav-menu{
     width: 100%;
@@ -17,10 +29,51 @@
     width: 200px;
 }
 
+.document-page{
+    margin: 2em;
+    border-radius: 10px;
+}
+
+.login-box{
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+}
+
+.login-body{
+    margin-bottom: 0;
+}
+
+
 /*Responsivo*/
 @media screen and (max-width: 640px){
     .page-titulo{
         width: 100%;
+    }
+
+    .login-page{
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-box {
+        margin: 0;
+        padding: 1em;
+    }
+
+    .login-box{
+        border-radius: 0em;
+    }
+    .login-footer{
+        border-radius: 0em;
+    }
+
+    .form-input{
+        width: 100% !important;
+    }
+
+    .inputs{
+        margin-left: .5em;
+        margin-right: .5em;
     }
 
     .nav-menu{
@@ -36,5 +89,10 @@
     .plant-image{
         height: 100px;
         width: 100px;
+    }
+
+    .document-page{
+        margin: 0;
+        border-radius: 0px;
     }
 }
