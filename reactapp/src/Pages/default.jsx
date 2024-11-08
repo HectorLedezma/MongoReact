@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Connection } from "../Conection/connection";
 import '../Styles/colors.css';
+import '../Styles/responsive.css'
+import '../Styles/borders.css'
+import '../Styles/functions.css'
 
 function Default(){
 
@@ -29,9 +32,12 @@ function Default(){
             let list = [];
             result.forEach(d=>{
                 list.push(
-                    <div className="plant-card border border-3 rounded text-light m-3" key={d._id}>
+                    <div className="plant-card border-3 rounded m-3" key={d._id}>
                         <div className="d-flex justify-content-center">
                             {nombre_comun(d.nombre_comun)}
+                        </div>
+                        <div className="d-flex justify-content-center">
+                            <img className="plant-image m-3 rounded" src={d.image} alt={d.nombre_cientifico} />
                         </div>
                         <div className="d-flex justify-content-center">
                             <h5 className="me-3 ms-3">
