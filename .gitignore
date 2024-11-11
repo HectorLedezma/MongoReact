@@ -1,4 +1,6 @@
 node/node_modules
 reactapp/node_modules
 Mongocker/data
+reactapp/.env
+node/.env
 
