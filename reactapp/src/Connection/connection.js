@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import apiClient from "./config";
 
 
 const uri = process.env.REACT_APP_BACKEND_URI;
@@ -108,6 +109,37 @@ export class Connection {
             console.log(error)
         }
         return this.blog
+    }
+
+
+    //Django
+
+    async ConsigueToken(){
+        let result;
+        try {
+            result = await apiClient.get(uri+'get-token').data;
+        } catch (error) {
+            result = error;
+        }
+        return result;
+    }
+
+    async ConsulPost(form){
+        try {
+            console.log(uri+'api/post-request');
+            const response = await apiClient.post(uri+'api/post-request',{headers:{
+                "X-CSRFToken": await this.ConsigueToken()
+            },body:{
+                form
+            }})
+            this.blog = response.data;
+        } catch (error) {
+            console.log({error})
+            this.blog = await new Promise(() => {
+                return {"Error":error};
+              });
+        }
+        return this.blog;   
     }
 
 }

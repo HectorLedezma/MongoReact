@@ -4,6 +4,7 @@ import MainPage from '../Pages/main';
 import RouteCare from '../Varios/RouteCare';
 import Cookies from 'universal-cookie';
 import { Connection } from '../Connection/connection';
+import DjangoTest from '../Pages/django-test';
 
 function Rutas(){
     const cookie = new Cookies();
@@ -33,6 +34,7 @@ function Rutas(){
             <Route path='/document'>
                 <Route path=':id' element={<MainID/>}/>
             </Route>
+            <Route path='/django' element={<DjangoTest/>}/>
         </Routes>
     )
 }
